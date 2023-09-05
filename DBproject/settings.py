@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'app_general.apps.AppGennralConfig',
+    'app_tours.apps.AppToursConfig',
 ]
 
 MIDDLEWARE = [
@@ -70,14 +72,17 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'DBproject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'mysql.connector.django',
+        'NAME': 'django_aroundtheworld',
+        'USER': 'root',
+        'PASSWORD':'y#Z180k+',
+        'HOST': '127.0.0.1',
+        'PORT': '3306'
     }
 }
 

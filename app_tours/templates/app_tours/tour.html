@@ -1,0 +1,10 @@
+{% extends 'app_general/components/base.html'%}
+{% block site_title%}tour |{% endblock site_title%}
+{% block content%}
+{% if tour is not None %}
+    <h3>{{tour.title}}</h3>
+    <p>ประเทศ:{{tour.country}}</p>
+{% else %}
+    <p>ไม่พบข้อมูลทัวร์นี้</p>
+{% endif %}
+{% endblock content%}
