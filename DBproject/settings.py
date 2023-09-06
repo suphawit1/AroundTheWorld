@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'DBproject.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'mysql.connector.django',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'django_aroundtheworld',
-        'USER': 'root',
+        'USER': 'admin',
         'PASSWORD':'y#Z180k+',
-        'HOST': '127.0.0.1',
+        'HOST': 'dbproject.cx11ha9xryk0.ap-southeast-2.rds.amazonaws.com',
         'PORT': '3306'
     }
 }

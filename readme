@@ -1,9 +1,7 @@
 วิธีเปิดเว็ป (vscode)
 1.เปิด new Terminal
 2.pip install django(ถ้ายังไม่ได้โหลด)
-3.python manage.py makemigrations
+3.pip install mysqlclient(ถ้ายังไม่ได้โหลด)
 4.python manage.py migrate
 5.python manage.py runserver
 6.กดลิงค์ที่ขึ้นมา
-
-mysqlpass:y#Z180k+
