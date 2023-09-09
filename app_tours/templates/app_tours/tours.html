@@ -3,8 +3,8 @@
 {% block content%}
     <h1>Tours</h1>
     {% for tour in tours %}
-        <h3><a href="{% url 'tour' tour.id %}">{{tour.title}}</a></h3>
-        <p>ประเทศ:{{tour.country}}</p>
+        <h3><a href="{% url 'tour' tour.TourName %}">{{tour.TourName}}</a></h3>
+        <p>สถานะ:{{tour.Status}}</p>
     {% empty %}
         <p>ไม่พบข้อมูล Tour</p>
     {% endfor %}

@@ -1,23 +1,19 @@
 from django.shortcuts import render
 from django.http.response import HttpResponse
-
-
-all_tours = [
-    {'id': 1, 'title':'Bankok','country': 'Thailand'},
-    {'id': 2, 'title':'Tokyo','country': 'Japan'},
-    {'id': 3, 'title':'Somewhere','country': 'Thailand'}
-]
+from .models import TourNames
 
 # Create your views here.
 def tours(request):
+    all_tours = TourNames.objects.order_by('TourName')
+
     context = {'tours': all_tours}
     return render(request, 'app_tours/tours.html',context)
 
-def tour(request, tour_id):
+def tour(request, tour_name):
     one_tour = None
     try:
-        one_tour = [f for f in all_tours if f['id'] == tour_id][0]
-    except IndexError:
-        print('ไม่พบข้อมูล')
+        one_tour = TourNames.objects.get(TourName=tour_name)
+    except:
+        print("ไม่พบข้อมูล")
     context = {'tour': one_tour}
     return render(request,'app_tours/tour.html', context)

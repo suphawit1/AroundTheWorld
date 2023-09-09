@@ -2,6 +2,10 @@
 1.เปิด new Terminal
 2.pip install django(ถ้ายังไม่ได้โหลด)
 3.pip install mysqlclient(ถ้ายังไม่ได้โหลด)
-4.python manage.py migrate
+4.python manage.py migrate(ถ้าแก้ model)
 5.python manage.py runserver
 6.กดลิงค์ที่ขึ้นมา
+
+หน้า admin เข้าลิงค์แล้วเติม /admin
+Username:admin
+Pass:admin1234
