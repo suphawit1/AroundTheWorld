@@ -1,3 +1,7 @@
+** update python เป็นเวอร์ชั่นใหม่ล่าสุด ด้วยนะ **
+https://www.python.org/downloads/ ---> ล่าสุดคือ 3.11.5
+จากนั้นค่อยทำตามด้านล่าง
+
 วิธีเปิดเว็ป (vscode)
 1.เปิด new Terminal
 2.pip install django(ถ้ายังไม่ได้โหลด)
