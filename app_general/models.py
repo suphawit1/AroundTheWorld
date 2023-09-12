@@ -13,7 +13,12 @@ class Booking(models.Model):
     cusID = models.ForeignKey('app_user.Customer',on_delete=models.CASCADE)
 
 class Payment(models.Model):
+    STATUS = [
+        ("pending","Pending"),
+        ("completed","Completed"),
+        ("canceled","Canceled")
+    ]
     PayNumber = models.AutoField(primary_key=True)
     cusID = models.ForeignKey('app_user.Customer',on_delete=models.CASCADE)
-    status = models.TextField()
+    status = models.TextField(choices=STATUS, default="pending")
     Amount = models.IntegerField()

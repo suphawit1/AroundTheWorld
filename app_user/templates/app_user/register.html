@@ -5,7 +5,7 @@
 {% block content %}
 <section class="content-section">
     <div class ="content-container">
-        <h3 class="content-title">เข้าสู่ระบบ</h3>
+        <h3 class="content-title">สมัครสมาชิก</h3>
         <form action="{% url 'register' %}" method="post">
             {% csrf_token %}
             {{ form.as_p }}

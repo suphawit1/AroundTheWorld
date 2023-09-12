@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'DBproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_aroundtheworld',
+        'NAME': 'django_aroundtheworldv2',
         'USER': 'admin',
         'PASSWORD':'y#Z180k+',
         'HOST': 'dbproject.cx11ha9xryk0.ap-southeast-2.rds.amazonaws.com',
@@ -134,3 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
+LOGIN_URL = "login"

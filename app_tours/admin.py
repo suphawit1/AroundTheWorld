@@ -12,8 +12,8 @@ class CountrysAdmin(admin.ModelAdmin):
     search_fields = ['CountryName']
 
 class LocationsAdmin(admin.ModelAdmin):
-    list_display = ['City']
-    search_fields = ['City']
+    list_display = ['LocationName']
+    search_fields = ['LocationName']
 
 class AccommodationAdmin(admin.ModelAdmin):
     list_display = ['AccomName','TypeRoom']

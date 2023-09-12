@@ -1,0 +1,15 @@
+{% extends 'app_general/components/base.html'%}
+{% block content%}
+
+    <form method="post">
+        <h2>จอง Tour-{{tour.TourName}}</h2>
+        <p>
+            <label>ชื่อ-นามสกุล</label><input type="text" value="{{Cus.FirstName}} {{Cus.LastName}}" readonly>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p>
+            <button type = "submit">จอง</button>
+        </p>
+    </form>
+    
+{% endblock content%}

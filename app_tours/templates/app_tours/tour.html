@@ -3,10 +3,19 @@
 {% block content%}
 {% if tour is not None %}
     <h3>{{tour.TourName}}</h3>
-    <p>เมือง:{{tour.LocationID.City}}</p>
     <p>ประเทศ:{{tour.CountryID.CountryName}}</p>
     <p>สถานะ:{{tour.Status}}</p>
     <p>ระยะเวลาการเดินทาง:{{tour.TripDuration}}</p>
+    <button type="button" onclick="goToBookingPage()">จอง</button>
+
+        <script>
+        function goToBookingPage() {
+            var bookingUrl = "{% url 'booking' tour.TourName %}";
+
+            window.location.href = bookingUrl;
+        }
+        </script>
+
 {% else %}
     <p>ไม่พบข้อมูลทัวร์นี้</p>
 {% endif %}
