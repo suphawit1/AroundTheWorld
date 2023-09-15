@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required
 from app_tours.models import TourNames
 from app_user.models import Customer
 from .models import Payment,Booking
-from app_general.forms import BookingFrom
+from .forms import BookingFrom,Fakecardform
 from django.http import HttpRequest,HttpResponseRedirect
 from app_user.models import Customer
 from django.urls import reverse
@@ -24,7 +24,6 @@ def booking(request:HttpRequest, tour_name):
     
     if request.method == 'POST':
         form = BookingFrom(request.POST)
-        print(form.errors)
 
         if form.is_valid():
             
@@ -36,18 +35,37 @@ def booking(request:HttpRequest, tour_name):
             GuideNameData = form.cleaned_data['GuideName']
             TourNamesData = one_tour
             cusIDData = Cus
+            request.session['type'] = form.cleaned_data['paymenttype']
 
-            Booking.objects.create(Seat=seatData,Day=dayData,Room=roomData,AirlineName=airData,AccomName=AccomNameData,GuideName=GuideNameData,TourName=TourNamesData,cusID=cusIDData)
+
+            new_payment = Payment(cusID=Cus, Amount= 1000)
+            new_payment.save()
+
+            Booking.objects.create(Seat=seatData,Day=dayData,Room=roomData,AirlineName=airData,AccomName=AccomNameData,
+                                   GuideName=GuideNameData,TourName=TourNamesData,cusID=cusIDData,payNum = new_payment)
 
             
             new_payment = Payment(cusID=Cus, Amount= 1000)
             new_payment.save()
-            return HttpResponseRedirect(reverse('payment'))
+            
+            return HttpResponseRedirect(reverse('payment', args=[new_payment.PayNumber]))
     else:
         form = BookingFrom(initial={'firstname': Cus.FirstName,'lastname': Cus.LastName,'TourName':one_tour.TourName})
 
     context = {'tour': one_tour,'form':form,'Cus':Cus}
     return render(request,'app_general/booking.html', context)
 
-def payment(request):
-    return render(request,'app_general/payment.html')
+def payment(request, pay_num):
+    if request.method == 'POST':
+        form = Fakecardform(request.POST)
+        if form.is_valid():
+            payment_update = Payment.objects.get(PayNumber = pay_num)
+            payment_update.status = "completed"
+            payment_update.save()
+            return HttpResponseRedirect(reverse('home'))
+    else:
+        form = Fakecardform()
+
+    type = request.session.get('type')
+    context = {'type': type,'form':form}
+    return render(request,'app_general/payment.html',context)

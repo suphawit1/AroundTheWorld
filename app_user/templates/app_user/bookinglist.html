@@ -1,0 +1,20 @@
+{% extends 'app_general/components/base.html'%}
+
+{% block site_title %} Register - {% endblock %}
+
+{% block content %}
+
+    <h1>Booking Tour</h1>
+    {% for book in booklist %}
+        <h3><a href="#">{{book.TourName}}</a></h3>
+        {% if book.payNum.status == 'pending' %}
+        <p>สถานะการชำระเงิน:{{book.payNum.status}}<a href="{% url 'payment' book.payNum.PayNumber %}">ชำระเงิน</a></p>
+        {% else %}
+        <p>สถานะการชำระเงิน:{{book.payNum.status}}</p>
+        {% endif %}
+        <p>วันเดินทาง:{{book.Day}}</p>
+    {% empty %}
+        <p>ไม่พบข้อมูลการจอง</p>
+    {% endfor %}
+
+{% endblock %}

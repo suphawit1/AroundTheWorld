@@ -1,9 +1,11 @@
 from django.shortcuts import render
-from app_user.forms import RegisterForm
+from .forms import RegisterForm,UserEditForm
 from django.contrib.auth import login
 from django.http import HttpRequest,HttpResponseRedirect
 from app_user.models import Customer
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from app_general.models import Booking
 
 # Create your views here.
 
@@ -29,3 +31,37 @@ def register(request:HttpRequest):
 
     context = {"form":form}
     return render(request, "app_user/register.html", context)
+
+@login_required
+def dashboard_user(request):
+    logged_in_user = request.user
+    Cus = Customer.objects.get(user=logged_in_user)
+    obj = Customer.objects.get(pk=Cus.CusID)
+    if request.method == "POST":
+        form = UserEditForm(request.POST,instance=obj)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect(request.path_info)
+    else:
+        initial_values = {
+            'FirstName': Cus.FirstName,
+            'LastName': Cus.LastName,
+            'Contract': Cus.Contract,
+            'Email': Cus.Email
+        }
+        form = UserEditForm(initial=initial_values,instance=obj)
+    context = {"form":form}
+    return render(request, "app_user/dashboard.html", context)
+
+@login_required
+def dashboard_book(request):
+    logged_in_user = request.user
+    Cus = Customer.objects.get(user=logged_in_user)
+
+    try:
+        booklist = Booking.objects.filter(cusID=Cus)
+    except:
+        booklist = None
+
+    context = {"booklist":booklist}
+    return render(request, "app_user/bookinglist.html", context)
