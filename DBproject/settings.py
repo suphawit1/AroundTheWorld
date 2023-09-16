@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'DBproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_aroundtheworldv2',
+        'NAME': 'django_aroundtheworld',
         'USER': 'admin',
         'PASSWORD':'y#Z180k+',
         'HOST': 'dbproject.cx11ha9xryk0.ap-southeast-2.rds.amazonaws.com',

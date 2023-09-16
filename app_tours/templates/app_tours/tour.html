@@ -3,7 +3,7 @@
 {% block content%}
 {% if tour is not None %}
     <h3>{{tour.TourName}}</h3>
-    <p>ประเทศ:{{tour.CountryID.CountryName}}</p>
+    <p>ประเทศ:{{tour.LocationName.CountryID.CountryName}}</p>
     <p>สถานะ:{{tour.Status}}</p>
     <p>ระยะเวลาการเดินทาง:{{tour.TripDuration}}</p>
     <button type="button" onclick="goToBookingPage()">จอง</button>

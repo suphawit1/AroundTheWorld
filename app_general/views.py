@@ -28,25 +28,16 @@ def booking(request:HttpRequest, tour_name):
         if form.is_valid():
             
             seatData = form.cleaned_data['Seat']
-            dayData = form.cleaned_data['Day']
             roomData = form.cleaned_data['Room']
-            airData = form.cleaned_data['AirlineName']
-            AccomNameData = form.cleaned_data['AccomName']
-            GuideNameData = form.cleaned_data['GuideName']
             TourNamesData = one_tour
             cusIDData = Cus
-            request.session['type'] = form.cleaned_data['paymenttype']
 
 
-            new_payment = Payment(cusID=Cus, Amount= 1000)
+            new_payment = Payment(cusID=Cus, Amount = one_tour.price)
             new_payment.save()
 
-            Booking.objects.create(Seat=seatData,Day=dayData,Room=roomData,AirlineName=airData,AccomName=AccomNameData,
-                                   GuideName=GuideNameData,TourName=TourNamesData,cusID=cusIDData,payNum = new_payment)
+            Booking.objects.create(Seat=seatData,Room=roomData,TourName=TourNamesData,cusID=cusIDData,payNum = new_payment)
 
-            
-            new_payment = Payment(cusID=Cus, Amount= 1000)
-            new_payment.save()
             
             return HttpResponseRedirect(reverse('payment', args=[new_payment.PayNumber]))
     else:
@@ -66,6 +57,5 @@ def payment(request, pay_num):
     else:
         form = Fakecardform()
 
-    type = request.session.get('type')
-    context = {'type': type,'form':form}
+    context = {'form':form}
     return render(request,'app_general/payment.html',context)

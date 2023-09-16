@@ -5,7 +5,7 @@ from app_general.models import *
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['TourName','Day']
+    list_display = ['TourName']
     search_fields = ['TourName']
 
 class PayAdmin(admin.ModelAdmin):

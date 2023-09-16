@@ -1,6 +1,5 @@
 {% extends 'app_general/components/base.html'%}
 {% block content%}
-{% if type == 'card'%}
     <form method="post">
         <h1>Payment - Card</h1>
         {% csrf_token %}
@@ -9,7 +8,4 @@
             <button type = "submit">จ่าย</button>
         </p>
     </form>
-{% else %}
-    <h1>Payment - ยังไม่ได้ทำ</h1>
-{% endif %}
 {% endblock content%}
