@@ -24,26 +24,33 @@ def booking(request:HttpRequest, tour_name):
     
     if request.method == 'POST':
         form = BookingFrom(request.POST)
-
-        if form.is_valid():
             
-            seatData = form.cleaned_data['Seat']
-            roomData = form.cleaned_data['Room']
-            TourNamesData = one_tour
-            cusIDData = Cus
+        seatData = request.POST.getlist('Seat')
+        roomData = request.POST.getlist('Room')
+        nameData = request.POST.getlist('Name')
 
+        new_payment = Payment(cusID=Cus, Amount = one_tour.price*len(seatData))
+        new_payment.save()
+        for i in range (0,len(seatData)):
+            Booking.objects.create(Seat=seatData[i],Room=roomData[i],TourName=one_tour,cusID=Cus,payNum = new_payment,FullName=nameData[i])
 
-            new_payment = Payment(cusID=Cus, Amount = one_tour.price)
-            new_payment.save()
-
-            Booking.objects.create(Seat=seatData,Room=roomData,TourName=TourNamesData,cusID=cusIDData,payNum = new_payment)
-
-            
-            return HttpResponseRedirect(reverse('payment', args=[new_payment.PayNumber]))
+        return HttpResponseRedirect(reverse('payment', args=[new_payment.PayNumber]))
     else:
         form = BookingFrom(initial={'firstname': Cus.FirstName,'lastname': Cus.LastName,'TourName':one_tour.TourName})
 
-    context = {'tour': one_tour,'form':form,'Cus':Cus}
+    comboboxOptions = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27'
+                       ,'28','29','30','31','32','33','34','35','36','37','38','39','40']
+    bookedobj = Booking.objects.filter(TourName=tour_name)
+    bookedseatlist = []
+    bookedroomlist = []
+    for i in bookedobj:
+        bookedseatlist.append(i.Seat)
+        bookedroomlist.append(i.Room)
+
+    AvcomboboxOptions = sorted(list(set(comboboxOptions) - set(bookedroomlist)))
+    AvcomboboxOptions.sort()
+
+    context = {'tour': one_tour,'form':form,'Cus':Cus,'room':AvcomboboxOptions,'bookedseatlist':bookedseatlist}
     return render(request,'app_general/booking.html', context)
 
 def payment(request, pay_num):

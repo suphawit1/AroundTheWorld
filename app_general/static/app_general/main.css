@@ -1,0 +1,100 @@
+button{
+  appearance: none;
+  background-color: #2ea44f;
+  border: 1px solid rgba(27, 31, 35, .15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: -apple-system,system-ui,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji";
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+#BookingSeat{
+    margin-left: 230px;
+}
+
+.SeatHead{
+    background-color: #faa5cf;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}
+
+input.Airplaneseat {
+    width: 20px;
+    height: 20px;
+    margin-bottom: 25px;
+    margin-right: 3px;
+}
+input.Airplaneseatbooked{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 25px;
+    margin-right: 3px;
+    color: rgb(248, 0, 0);
+    cursor: not-allowed;
+}
+
+
+.Bookingseat_summary{
+    position: absolute;
+    border: 10px solid #f7cd14;
+    border-top: 50px solid #f7cd14;
+    border-top-right-radius: 50px ;
+    border-top-left-radius: 50px ;
+    left: 736px;
+    top: 82px;
+    width: 550px;
+    height: 600px;
+}
+.BookingTotal{
+    border-top: 5px solid #000000;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.SeatForm{
+    margin-left: 30px;
+    padding: 10px;
+}
+
+.Airplaneseat[id='B1'],.Airplaneseat[id='B2'],.Airplaneseat[id='B3'],.Airplaneseat[id='B4'],.Airplaneseat[id='B5']
+,.Airplaneseat[id='B6'],.Airplaneseat[id='B7'],.Airplaneseat[id='B8'],.Airplaneseat[id='B9'],.Airplaneseat[id='B10'],
+.Airplaneseatbooked[id='B1'],.Airplaneseatbooked[id='B2'],.Airplaneseatbooked[id='B3'],.Airplaneseatbooked[id='B4'],.Airplaneseatbooked[id='B5']
+,.Airplaneseatbooked[id='B6'],.Airplaneseatbooked[id='B7'],.Airplaneseatbooked[id='B8'],.Airplaneseatbooked[id='B9'],.Airplaneseatbooked[id='B10']{
+    margin-right: 25px;
+}
+.AirplaneBG{
+    border: 1px solid #afafaf;
+    width: 600px;
+    height: 1000px;
+    background-image: url('/static/app_general/PlaneSeatBooking.svg');
+    background-repeat: no-repeat;
+}
+h2{
+    position: relative;
+    left: 10px;
+}
+.Booking_page{
+    width: 50vw;
+    height: 50vw;
+}
+.AirplaneBook{
+    position: relative;
+    left: 208px;
+    top: 169px;
+    width: 150px;
+    height: 550px;
+}
