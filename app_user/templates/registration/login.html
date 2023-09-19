@@ -1,24 +1,37 @@
 {% extends 'app_general/components/base.html'%}
+{% load static %}
 
 {% block site_title %} Login - {% endblock %}
 
 {% block content %}
-<section class="content-section">
-    <div class ="content-container">
-        <h3 class="content-title">เข้าสู่ระบบ</h3>
-        <form action="{% url 'login' %}" method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {% if request.GET.next %}
-                <input type="hidden" name="next" value="{{ request.GET.next }}">
-            {% endif %}
-            
-            <p>
-                <button type = "submit">เข้าสู่ระบบ</button>
-            </p>
+<section class="u-clearfix u-custom-color-3 u-section-1" id="sec-9909">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <form action="{% url 'login' %}" method="post" onsubmit="return checkForm()">
+            <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-1">
+                {% csrf_token %}
+                <div class="u-container-layout u-container-layout-1">
+                    <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="{% static 'app_general/logo.png' %}" alt="" data-image-width="512" data-image-height="512">
+                    <h1 class="u-text u-text-default u-text-1">Around The World</h1>
+                    <h1 class="u-text u-text-default u-text-2">เข้าสู่ระบบ</h1>
+
+                    <div class="custom-expanded u-border-1 u-border-grey-75 u-container-style u-group u-shape-rectangle u-group-2">
+                        {{ form.username }}
+                        {{ form.username.errors }}
+                    </div>
+                    <h1 class="u-text u-text-default u-text-3">ชื่อผู้ใช้ : </h1>
+                    <div class="custom-expanded u-border-1 u-border-grey-75 u-container-style u-group u-shape-rectangle u-group-3">
+                        {{ form.password }}
+                        {{ form.password.errors }}
+                    </div>
+                    <h1 class="u-text u-text-default u-text-4">รหัสผ่าน : </h1>
+
+                    <button type="submit" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-3 u-radius-15 u-btn-1">เข้าสู่ระบบ</button>
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
+                </div>
+            </div>
         </form>
     </div>
 </section>
-
-
 {% endblock %}
