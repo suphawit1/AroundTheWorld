@@ -19,7 +19,7 @@ class AccommodationAdmin(admin.ModelAdmin):
     list_display = ['AccomName','TypeRoom']
     search_fields = ['AccomName']
 
-admin.site.register(TourNames, TourAdmin)
+admin.site.register(Tours, TourAdmin)
 admin.site.register(Countrys, CountrysAdmin)
 admin.site.register(Locations, LocationsAdmin)
 admin.site.register(Accommodation, AccommodationAdmin)

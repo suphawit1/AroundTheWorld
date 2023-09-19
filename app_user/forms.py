@@ -14,10 +14,18 @@ alpha_validator = RegexValidator(
 )
 class RegisterForm(UserCreationForm):
 
-    FirstName = forms.CharField(max_length = 25, validators=[alpha_validator])
-    LastName = forms.CharField(max_length = 25, validators=[alpha_validator])
-    Contract = forms.CharField(max_length = 10 ,validators=[numeric_validator])
-    Email = forms.EmailField(max_length = 25)
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={'placeholder': 'Username','Class':'u-input u-input-rectangle u-block-c20c-29','id':'text-d11f'}))
+    FirstName = forms.CharField(max_length = 25, validators=[alpha_validator],widget=forms.TextInput(
+        attrs={'placeholder': 'Firstname','Class':'u-input u-input-rectangle u-block-c20c-40','id':'text-d78d'}))
+    LastName = forms.CharField(max_length = 25, validators=[alpha_validator],widget=forms.TextInput(
+        attrs={'placeholder': 'Lastname','Class':'u-input u-input-rectangle u-block-c20c-42','id':'text-5496'}))
+    Contract = forms.CharField(max_length = 10 ,validators=[numeric_validator],widget=forms.TextInput(
+        attrs={'placeholder': 'Contact','Class':'u-input u-input-rectangle u-block-c20c-45','id':'text-ce66'}))
+    Email = forms.EmailField(max_length = 25,widget=forms.TextInput(
+        attrs={'placeholder': 'Email address','Class':'u-input u-input-rectangle u-block-c20c-17','id':'email-5c33'}))
+    password1 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Password', 'class': 'u-input u-input-rectangle u-block-c20c-32', 'id': 'text-23c2'}))
+    password2 = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'Confirm password','Class':'u-input u-input-rectangle u-block-c20c-36','id':'text-5fac'}))
 
     class Meta:
         model = User

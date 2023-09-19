@@ -3,15 +3,18 @@
 {% block content%}
 {% if tour is not None %}
     <h3>{{tour.TourName}}</h3>
-    <p>ประเทศ:{{tour.LocationName.CountryID.CountryName}}</p>
+    <p>ประเทศ:{{tour.CountryName}}</p>
     <p>สถานะ:{{tour.Status}}</p>
     <p>ระยะเวลาการเดินทาง:{{tour.TripDuration}}</p>
+    <p>สถานที่ท่องเที่ยว</p>
+    {% for i in tour.ListLoID.all %}
+        <p style="margin-left: 20px;">->{{i}}</p>
+    {% endfor %}
     <button type="button" onclick="goToBookingPage()">จอง</button>
 
         <script>
         function goToBookingPage() {
             var bookingUrl = "{% url 'booking' tour.TourName %}";
-
             window.location.href = bookingUrl;
         }
         </script>

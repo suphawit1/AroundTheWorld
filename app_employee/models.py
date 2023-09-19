@@ -7,7 +7,8 @@ class Employees(models.Model):
     EmpFirstName = models.CharField(max_length = 25)
     EmpLastName = models.CharField(max_length = 25)
     Job = models.CharField(max_length = 15)
-    Contract = models.CharField(max_length = 10)
+    EmpContract = models.CharField(max_length = 10)
+    EmpEmail = models.CharField(max_length=25)
     def __str__(self) -> str:
         return '{} {}'.format(self.EmpFirstName,self.EmpLastName)
 class GuideTour(models.Model):
@@ -17,7 +18,7 @@ class GuideTour(models.Model):
     ]
     GuideName = models.CharField(max_length = 25, primary_key = True)
     EmpID = models.ForeignKey(Employees,on_delete=models.CASCADE)
-    Contact = models.CharField(max_length = 10)
+    GuideContact = models.CharField(max_length = 10)
     Status = models.TextField(choices=STATUS, default="available")
     def __str__(self) -> str:
         return '{}'.format(self.GuideName)

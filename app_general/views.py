@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from app_tours.models import TourNames
+from app_tours.models import Tours
 from app_user.models import Customer
 from .models import Payment,Booking
 from .forms import BookingFrom,Fakecardform
@@ -18,7 +18,7 @@ def booking(request:HttpRequest, tour_name):
     Cus = Customer.objects.get(user=logged_in_user)
     one_tour = None
     try:
-        one_tour = TourNames.objects.get(TourName=tour_name)
+        one_tour = Tours.objects.get(TourName=tour_name)
     except:
         print("ไม่พบข้อมูล")
     
@@ -32,11 +32,11 @@ def booking(request:HttpRequest, tour_name):
         new_payment = Payment(cusID=Cus, Amount = one_tour.price*len(seatData))
         new_payment.save()
         for i in range (0,len(seatData)):
-            Booking.objects.create(Seat=seatData[i],Room=roomData[i],TourName=one_tour,cusID=Cus,payNum = new_payment,FullName=nameData[i])
+            Booking.objects.create(Seat=seatData[i],Room=roomData[i],TourName=one_tour,cusID=Cus,PayNumber = new_payment,FullName=nameData[i])
 
         return HttpResponseRedirect(reverse('payment', args=[new_payment.PayNumber]))
     else:
-        form = BookingFrom(initial={'firstname': Cus.FirstName,'lastname': Cus.LastName,'TourName':one_tour.TourName})
+        form = BookingFrom(initial={'firstname': Cus.CusFirstName,'lastname': Cus.CusLastName,'TourName':one_tour.TourName})
 
     comboboxOptions = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27'
                        ,'28','29','30','31','32','33','34','35','36','37','38','39','40']
@@ -54,6 +54,7 @@ def booking(request:HttpRequest, tour_name):
     return render(request,'app_general/booking.html', context)
 
 def payment(request, pay_num):
+    one_book = Booking.objects.get(PayNumber = pay_num)
     if request.method == 'POST':
         form = Fakecardform(request.POST)
         if form.is_valid():
@@ -64,5 +65,5 @@ def payment(request, pay_num):
     else:
         form = Fakecardform()
 
-    context = {'form':form}
+    context = {'form':form,'book':one_book}
     return render(request,'app_general/payment.html',context)

@@ -3,9 +3,9 @@ from django.db import models
 # Create your models here.
 class Payment(models.Model):
     STATUS = [
-        ("pending","Pending"),
-        ("completed","Completed"),
-        ("canceled","Canceled")
+        ("รอการชำระ","รอการชำระ"),
+        ("สำเร็จ","สำเร็จ"),
+        ("ยกเลิก","ยกเลิก")
     ]
     PayNumber = models.AutoField(primary_key=True)
     cusID = models.ForeignKey('app_user.Customer',on_delete=models.CASCADE)
@@ -16,9 +16,10 @@ class Booking(models.Model):
     BookID = models.AutoField(primary_key=True)
     FullName = models.CharField(max_length= 50)
     Seat = models.TextField()
-    TourName = models.ForeignKey('app_tours.TourNames',on_delete=models.CASCADE)
     Room = models.TextField()
+    TourName = models.ForeignKey('app_tours.Tours',on_delete=models.CASCADE)
+    BookTime = models.DateTimeField(auto_now_add=True)
     cusID = models.ForeignKey('app_user.Customer',on_delete=models.CASCADE)
-    payNum = models.ForeignKey(Payment,on_delete=models.CASCADE)
+    PayNumber = models.ForeignKey(Payment,on_delete=models.CASCADE)
 
 

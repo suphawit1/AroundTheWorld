@@ -13,6 +13,7 @@ def register(request:HttpRequest):
     if request.method == "POST":
         form = RegisterForm(request.POST)
 
+        print(form.errors)
         if form.is_valid():
             user = form.save()
 
@@ -21,7 +22,7 @@ def register(request:HttpRequest):
             Contractdata = form.cleaned_data['Contract']
             Emaildata = form.cleaned_data['Email']
 
-            Customer.objects.create(user=user, FirstName=FirstNamedata, LastName=LastNamedata, Contract=Contractdata, Email=Emaildata)
+            Customer.objects.create(user=user, CusFirstName=FirstNamedata, CusLastName=LastNamedata, CusContract=Contractdata, CusEmail=Emaildata)
 
             login(request, user)
 
@@ -44,10 +45,10 @@ def dashboard_user(request):
             return HttpResponseRedirect(request.path_info)
     else:
         initial_values = {
-            'FirstName': Cus.FirstName,
-            'LastName': Cus.LastName,
-            'Contract': Cus.Contract,
-            'Email': Cus.Email
+            'FirstName': Cus.CusFirstName,
+            'LastName': Cus.CusLastName,
+            'Contract': Cus.CusContract,
+            'Email': Cus.CusEmail
         }
         form = UserEditForm(initial=initial_values,instance=obj)
     context = {"form":form}

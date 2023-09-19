@@ -7,7 +7,7 @@ from app_user.models import *
 # Register your models here.
 
 class cusAdmin(admin.ModelAdmin):
-    list_display = ['FirstName','LastName']
-    search_fields = ['FirstName']
+    list_display = ['CusFirstName','CusLastName']
+    search_fields = ['CusFirstName']
 
 admin.site.register(Customer, cusAdmin)
