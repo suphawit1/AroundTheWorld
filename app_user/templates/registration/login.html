@@ -6,7 +6,7 @@
 {% block content %}
 <section class="u-clearfix u-custom-color-3 u-section-1" id="sec-9909">
     <div class="u-clearfix u-sheet u-sheet-1">
-        <form action="{% url 'login' %}" method="post" onsubmit="return checkForm()">
+        <form action="{% url 'login' %}" method="post">
             <div class="u-container-style u-group u-radius-15 u-shape-round u-white u-group-1">
                 {% csrf_token %}
                 <div class="u-container-layout u-container-layout-1">
@@ -32,4 +32,5 @@
         </form>
     </div>
 </section>
+<div class="Background"></div>
 {% endblock %}
