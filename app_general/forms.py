@@ -37,14 +37,18 @@ class Fakecardform(forms.Form):
         message='Only numeric characters are allowed.',
     )
     alpha_validator = RegexValidator(
-        regex=r'^[a-zA-Z]*$',
+        regex=r'^[a-z A-Z]*$',
         message='Only alphabetic characters are allowed.',
     )
 
-    Name = forms.CharField(max_length=50, validators=[alpha_validator])
-    CreditCard = forms.CharField(max_length=16, validators=[numeric_validator])
-    CVV = forms.CharField(max_length=3, validators=[numeric_validator])
-    exmonth = forms.ChoiceField(choices=exmonthchoice,widget=forms.Select)
-    exyear = forms.ChoiceField(choices=exyearchoice,widget=forms.Select)
+    Name = forms.CharField(max_length=50, validators=[alpha_validator], widget=forms.TextInput(attrs={'id': 'name'}),
+        label='ชื่อเจ้าของบัตร(ภาษาอังกฤษ)'
+        )
+    CreditCard = forms.CharField(max_length=16, validators=[numeric_validator], widget=forms.TextInput(attrs={'id': 'card'}),
+        label='เลขบัตรเครดิต')
+    CVV = forms.CharField(max_length=3, validators=[numeric_validator] , widget=forms.TextInput(attrs={'id': 'CVV'}),
+        label='เลข CVV')
+    exmonth = forms.ChoiceField(choices=exmonthchoice,widget=forms.Select(attrs={'id': 'exmonth'}))
+    exyear = forms.ChoiceField(choices=exyearchoice,widget=forms.Select(attrs={'id': 'exyear'}))
 
     fields = ["Name","CreditCard","CVV","exyear","exmonth"]

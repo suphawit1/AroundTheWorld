@@ -10,6 +10,12 @@
 {% endblock %}
 
 {% block content %}
+{% if error_mess != '' %}
+<script>
+  var error = "{{ error_mess|escapejs }}";
+  alert(error);
+</script>
+{% endif %}
 <section class="u-clearfix u-gradient u-section-1" id="sec-a296">
   <div class="u-clearfix u-sheet u-sheet-1">
     <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">

@@ -9,7 +9,7 @@ class Customer(models.Model):
     CusLastName = models.CharField(max_length = 25)
     CusContract = models.CharField(max_length = 10)
     CusEmail = models.EmailField(max_length = 25,unique=True)
-    Credits = models.FloatField(default=99999999)
+    Credits = models.FloatField(default=0)
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     def __str__(self) -> str:
         return '{} {}'.format(self.CusFirstName,self.CusLastName)

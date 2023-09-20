@@ -6,11 +6,11 @@ from django.core.validators import RegexValidator
 
 numeric_validator = RegexValidator(
         regex=r'^[0-9]*$',
-        message='Only numeric characters are allowed.',
+        message='ต้องเป็นตัวเลขเท่านั้น',
     )
 alpha_validator = RegexValidator(
     regex=r'^[ก-๏\s]*$',
-    message='Only ตัวอักษรไทย are allowed.',
+    message='ต้องตัวอักษรไทยเท่านั้น',
 )
 class RegisterForm(UserCreationForm):
 

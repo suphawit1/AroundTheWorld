@@ -54,16 +54,18 @@ def booking(request:HttpRequest, tour_name):
     return render(request,'app_general/booking.html', context)
 
 def payment(request, pay_num):
-    one_book = Booking.objects.get(PayNumber = pay_num)
+    logged_in_user = request.user
+    Cus = Customer.objects.get(user=logged_in_user)
+    one_book = Booking.objects.filter(PayNumber = pay_num)
+    one_payment = Payment.objects.get(PayNumber = pay_num)
     if request.method == 'POST':
         form = Fakecardform(request.POST)
         if form.is_valid():
-            payment_update = Payment.objects.get(PayNumber = pay_num)
-            payment_update.status = "completed"
-            payment_update.save()
+            one_payment.status = "completed"
+            one_payment.save()
             return HttpResponseRedirect(reverse('home'))
     else:
         form = Fakecardform()
 
-    context = {'form':form,'book':one_book}
+    context = {'form':form,'book':one_book[0],'payment':one_payment,'cus':Cus}
     return render(request,'app_general/payment.html',context)
