@@ -2,78 +2,75 @@
 {% load static %}
 
 {% block site_title %} Login - {% endblock %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'app_user/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'app_user/Register.css' %}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,200,300,400,500,600,700,800,900">
+{% endblock %}
 
 {% block content %}
-<section class="u-clearfix u-gradient u-block-c20c-1" custom-posts-hash="[]" data-style="blank" data-section-properties="{&quot;margin&quot;:&quot;none&quot;,&quot;stretch&quot;:true}" id="sec-a296" data-source="Blank" data-id="c20c">
-  <div class="u-clearfix u-sheet u-block-c20c-2">
-    <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-block-c20c-3">
+<section class="u-clearfix u-gradient u-section-1" id="sec-a296">
+  <div class="u-clearfix u-sheet u-sheet-1">
+    <div class="data-layout-selected u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
       <div class="u-layout">
         <div class="u-layout-row">
-          <div class="u-container-style u-layout-cell u-size-14 u-block-c20c-4">
-            <div class="u-container-layout u-block-c20c-5"></div>
+          <div class="u-container-style u-layout-cell u-size-14 u-layout-cell-1">
+            <div class="u-container-layout u-container-layout-1"></div>
           </div>
-          <div class="u-container-style u-layout-cell u-radius-29 u-shape-round u-size-33 u-white u-block-c20c-6">
-            <div class="u-container-layout u-block-c20c-7">
-              <img class="u-align-left u-image u-image-default u-block-c20c-23" src="{% static 'app_general/logo.png' %}"  alt="" data-image-width="512" data-image-height="512">
-              <h1 class="u-custom-font u-font-roboto-slab u-text u-block-c20c-25">Around The World</h1>
-              <h1 class="u-align-center u-text u-block-c20c-26">Signup</h1>
-              <div class="custom-expanded u-align-center u-form u-block-c20c-11">
-                <form form action="{% url 'register' %}" id="Register" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" data-services="602db100508af8d86a3c311171c6c2ee" name="form" style="padding: 10px;">
-                  {% csrf_token %}
-                  <input type="hidden" id="siteId" name="siteId" value="3012822459">
-                  <input type="hidden" id="pageId" name="pageId" value="570501398">
-        
-                  <div class="u-form-group u-label-top u-block-c20c-27">
-                    <label for="text-d11f" class="u-form-control-hidden u-label u-block-c20c-28"></label>
+          <div class="u-container-style u-layout-cell u-radius-29 u-shape-round u-size-33 u-white u-layout-cell-2">
+            <form action="{% url 'register' %}" id="Register" method="post" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" source="email" name="form" style="padding: 10px;">
+              {% csrf_token %}
+              <div class="u-container-layout u-container-layout-2">
+              <img class="u-align-left u-image u-image-default u-image-1" src="{% static 'app_general/logo.png' %}" alt="" data-image-width="512" data-image-height="512">
+              <h1 class="u-custom-font u-font-roboto-slab u-text u-text-1">Around The World</h1>
+              <h1 class="u-align-center u-text u-text-2">Signup</h1>
+              <div class="custom-expanded u-align-center u-form u-form-1">
+                
+                  <div class="u-form-group u-label-top u-form-group-1">
+                    <label for="text-d11f" class="u-form-control-hidden u-label"></label>
                     {{ form.username }}
                   </div>
-                  <div class="u-form-group u-label-top u-block-c20c-30">
-                      <label for="text-23c2" class="u-form-control-hidden u-label u-block-c20c-31"></label>
-                      {{ form.password1 }}
+                  <div class="u-form-group u-label-top u-form-group-2">
+                    <label for="text-23c2" class="u-form-control-hidden u-label"></label>
+                    {{ form.password1 }}
                   </div>
-                  <p class="u-form-group u-form-text u-text u-block-c20c-47">
-                  -Your password can’t be too similar to your other personal&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; information.
-                  <br>-Your password must contain at least 8 characters.
-                  <br>-Your password can’t be a commonly used password.
-                  <br>-Your password can’t be entirely numeric.</p>
-                  <div class="u-form-group u-label-top u-block-c20c-34">
-                    <label for="text-5fac" class="u-form-control-hidden u-label u-block-c20c-35"></label>
+                  <p class="u-form-group u-form-text u-text u-text-3"> -Your password can’t be too similar to your other personal&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; information.<br>-Your password must contain at least 8 characters.<br>-Your password can’t be a commonly used password.<br>-Your password can’t be entirely numeric.
+                  </p>
+                  <div class="u-form-group u-label-top u-form-group-4">
+                    <label for="text-5fac" class="u-form-control-hidden u-label u-label-3"></label>
                     {{ form.password2 }}
                   </div>
-                  <div class="u-form-group u-label-top u-block-c20c-37">
-                    <label for="text-d78d" class="u-form-control-hidden u-label u-block-c20c-39"></label>
+                  <div class="u-form-group u-label-top u-form-group-5">
+                    <label for="text-d78d" class="u-form-control-hidden u-label"></label>
                     {{ form.FirstName }}
                   </div>
-                  <div class="u-form-group u-label-top u-block-c20c-38">
-                    <label for="text-5496" class="u-form-control-hidden u-label u-block-c20c-41"></label>
+                  <div class="u-form-group u-label-top u-form-group-6">
+                    <label for="text-5496" class="u-form-control-hidden u-label"></label>
                     {{ form.LastName }}
                   </div>
-                  <div class="u-form-group u-label-top u-block-c20c-43">
-                    <label for="text-ce66" class="u-form-control-hidden u-label u-block-c20c-44"></label>
+                  <div class="u-form-group u-label-top u-form-group-7">
+                    <label for="text-ce66" class="u-form-control-hidden u-label"></label>
                     {{ form.Contract}}
                   </div>
-                  <div class="u-form-email u-form-group u-label-top u-block-c20c-15">
-                    <label for="email-5c33" class="u-form-control-hidden u-label u-block-c20c-16"></label>
+                  <div class="u-form-email u-form-group u-label-top">
+                    <label for="email-5c33" class="u-form-control-hidden u-label"></label>
                     {{ form.Email }}
                   </div>
-        
-                  <div class="u-align-center u-form-group u-form-submit u-label-top u-block-c20c-21">
+                  <div class="u-align-center u-form-group u-form-submit u-label-top">
                     <button type="submit" value="submit" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-heading-font u-radius-18 u-block-c20c-22">Signup</button>
                   </div>
-                  <div class="u-form-send-message u-form-send-success">
-                      Thank you! Your message has been sent.
-                  </div>
-                  <div class="u-form-send-error u-form-send-message">
-                      Unable to send your message. Please fix errors then try again.
-                  </div>
+                  <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
+                  <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
                   <input type="hidden" value="" name="recaptchaResponse">
+                  <input type="hidden" name="formServices" value="62e48632-8d3e-6010-b20d-3410420628e2">
                 </form>
               </div>
             </div>
           </div>
-          <div class="u-container-style u-layout-cell u-size-13 u-block-c20c-8">
-            <div class="u-container-layout u-block-c20c-9"></div>
-          </div>  
+          <div class="u-container-style u-layout-cell u-size-13 u-layout-cell-3">
+            <div class="u-container-layout u-container-layout-3"></div>
+          </div>
         </div>
       </div>
     </div>
