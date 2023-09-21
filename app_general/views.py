@@ -7,6 +7,8 @@ from .forms import BookingFrom,Fakecardform
 from django.http import HttpRequest,HttpResponseRedirect
 from app_user.models import Customer
 from django.urls import reverse
+from datetime import datetime, timedelta
+from django.utils import timezone
 
 # Create your views here.
 def home(request):
@@ -41,9 +43,19 @@ def booking(request:HttpRequest, tour_name):
     comboboxOptions = ['1','2','3','4','5','6','7','8','9','10','11','12','13','14','15','16','17','18','19','20','21','22','23','24','25','26','27'
                        ,'28','29','30','31','32','33','34','35','36','37','38','39','40']
     bookedobj = Booking.objects.filter(TourName=tour_name)
+    
+    one_day_threshold = timedelta(hours=17)
+    
+    current_datetime = timezone.now()
     bookedseatlist = []
     bookedroomlist = []
     for i in bookedobj:
+        time_difference = current_datetime - i.BookTime
+        if time_difference >= one_day_threshold:
+            i.PayNumber.status = "ยกเลิก"
+            i.PayNumber.save()
+            i.delete()
+            continue
         bookedseatlist.append(i.Seat)
         bookedroomlist.append(i.Room)
 

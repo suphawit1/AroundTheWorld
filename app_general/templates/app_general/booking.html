@@ -1,108 +1,92 @@
 {% extends 'app_general/components/base.html'%}
 {% block content%}
-
-    <form method="post" action="{% url 'booking' tour.TourName %}">
-        <h2>จอง Tour-{{tour.TourName}}</h2>
-        {% csrf_token %}
-        <div class ="Booking_page">
-            <div class = "Bookingseat_summary">
-                <div class = "Bookingseat_info">
-                    <div class = "SeatHead" id ="1">
-                        <span id="checkedSeat1">เลขที่นั่ง: ไม่ได้เลือก</span>
-                        <div class = "SeatForm">
-                            ชื่อ-นามสกุล
-                            <input type="text" name="Name">
-                            เลขห้องพัก
-                            <select name="Room">
-                                {% for i in room %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
+    <section class ="Booking_page">
+        <form method="post" action="{% url 'booking' tour.TourName %}">
+            {% csrf_token %}
+            <div class = "Head_summary">
+                <h2 class = "headbook">จอง {{tour.TourName}}</h2>
+                <div class = "Bookingseat_summary">
+                    <div class = "Bookingseat_info">
+                        <div class = "SeatHead" id ="1">
+                            <span id="checkedSeat1">เลขที่นั่ง: ไม่ได้เลือก</span>
+                            <div class = "SeatForm">
+                                ชื่อ-นามสกุล
+                                <input type="text" name="Name">
+                                เลขห้องพัก
+                                <select name="Room">
+                                    {% for i in room %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class = "Bookingseat_info">
-                    <div class = "SeatHead" id ="2">
-                        <span id="checkedSeat2">เลขที่นั่ง: ไม่ได้เลือก</span>
-                        <div class = "SeatForm">
-                            ชื่อ-นามสกุล
-                            <input type="text" name="Name">
-                            เลขห้องพัก
-                            <select name="Room">
-                                {% for i in room %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
+                    <div class = "Bookingseat_info">
+                        <div class = "SeatHead" id ="2">
+                            <span id="checkedSeat2">เลขที่นั่ง: ไม่ได้เลือก</span>
+                            <div class = "SeatForm">
+                                ชื่อ-นามสกุล
+                                <input type="text" name="Name">
+                                เลขห้องพัก
+                                <select name="Room">
+                                    {% for i in room %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class = "Bookingseat_info">
-                    <div class = "SeatHead" id ="3">
-                        <span id="checkedSeat3">เลขที่นั่ง: ไม่ได้เลือก</span>
-                        <div class = "SeatForm">
-                            ชื่อ-นามสกุล
-                            <input type="text" name="Name">
-                            เลขห้องพัก
-                            <select name="Room">
-                                {% for i in room %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
+                    <div class = "Bookingseat_info">
+                        <div class = "SeatHead" id ="3">
+                            <span id="checkedSeat3">เลขที่นั่ง: ไม่ได้เลือก</span>
+                            <div class = "SeatForm">
+                                ชื่อ-นามสกุล
+                                <input type="text" name="Name">
+                                เลขห้องพัก
+                                <select name="Room">
+                                    {% for i in room %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class = "Bookingseat_info">
-                    <div class = "SeatHead" id ="4">
-                        <span id="checkedSeat4">เลขที่นั่ง: ไม่ได้เลือก</span>
-                        <div class = "SeatForm">
-                            ชื่อ-นามสกุล
-                            <input type="text" name="Name">
-                            เลขห้องพัก
-                            <select name="Room">
-                                {% for i in room %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
+                    <div class = "Bookingseat_info">
+                        <div class = "SeatHead" id ="4">
+                            <span id="checkedSeat4">เลขที่นั่ง: ไม่ได้เลือก</span>
+                            <div class = "SeatForm">
+                                ชื่อ-นามสกุล
+                                <input type="text" name="Name">
+                                เลขห้องพัก
+                                <select name="Room">
+                                    {% for i in room %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class = "Bookingseat_info">
-                    <div class = "SeatHead" id ="5">
-                        <span id="checkedSeat5">เลขที่นั่ง: ไม่ได้เลือก</span>
-                        <div class = "SeatForm">
-                            ชื่อ-นามสกุล
-                            <input type="text" name="Name">
-                            เลขห้องพัก
-                            <select name="Room">
-                                {% for i in room %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
+                    <div class = "Bookingseat_info">
+                        <div class = "SeatHead" id ="5">
+                            <span id="checkedSeat5">เลขที่นั่ง: ไม่ได้เลือก</span>
+                            <div class = "SeatForm">
+                                ชื่อ-นามสกุล
+                                <input type="text" name="Name">
+                                เลขห้องพัก
+                                <select name="Room">
+                                    {% for i in room %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class = "Bookingseat_info">
-                    <div class = "SeatHead" id ="6">
-                        <span id="checkedSeat6">เลขที่นั่ง: ไม่ได้เลือก</span>
-                        <div class = "SeatForm">
-                            ชื่อ-นามสกุล
-                            <input type="text" name="Name">
-                            เลขห้องพัก
-                            <select name="Room">
-                                {% for i in room %}
-                                    <option value="{{ i }}">{{ i }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class = "BookingTotal">
-                    <span id="checkedCount">{{ tour.TourName }} Book x 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ราคา 0 บาท</span>
-                    <p>
+                    <div class = "BookingTotal">
+                        <span id="checkedCount">{{ tour.TourName }} Book x 0 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ราคา 0 บาท</span>
                         <button type = "submit" id="BookingSeat">จอง</button>
-                    </p>
+                    </div>
                 </div>
             </div>
             <div class = "AirplaneBG">
@@ -116,9 +100,9 @@
                     {% endfor %}
                 </div>
             </div>
-            
-        </div>
-    </form>
+        </form>
+    </section>
+    
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript">
@@ -127,13 +111,19 @@
         var checkedCount = 0;
         var price = "{{ tour.price }}"
         var list = "{{bookedseatlist}}"
+        const dictionary = {};
+
+        dictionary['1'] = 'blank';
+        dictionary['2'] = 'blank';
+        dictionary['3'] = 'blank';
+        dictionary['4'] = 'blank';
+        dictionary['5'] = 'blank';
         
         $(".SeatHead#1").hide();
         $(".SeatHead#2").hide();
         $(".SeatHead#3").hide();
         $(".SeatHead#4").hide();
         $(".SeatHead#5").hide();
-        $(".SeatHead#6").hide();
 
         $("input.Airplaneseatbooked").prop("disabled", true);
 
@@ -143,10 +133,7 @@
             var maxChecked = 5;
             var label = $(this).data('label');
 
-            
-
             if (this.checked) {
-                console.log()
                 if (checkedCount >= maxChecked) {
                     this.checked = false;
                 }
@@ -158,12 +145,9 @@
             } else {
                 checkedCount--; // Decrement the checked count
                 updateCheckedCount();// Update the displayed count
-                updateUncheckedSeat();
-                
-
-                // Remove the associated <div> element when the checkbox is unchecked
-                $("#" + checkboxId + '_div').remove();
+                updateUncheckedSeat(label);
             }
+            console.log(dictionary)
         });
         function updateCheckedCount() {
             $("#checkedCount").html("{{ tour.TourName }} Book x " + checkedCount + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\
@@ -171,10 +155,22 @@
         }
         function updateCheckedSeat(label) {
             $("#checkedSeat"+checkedCount).html("เลขที่นั่ง:"+label);
-            $(".SeatHead#"+checkedCount).show();
+            for (const key in dictionary) {
+                const value = dictionary[key];
+                if (value == "blank"){
+                    $(".SeatHead#"+key).show();
+                    dictionary[key] = label;
+                    break;
+                }
+            }
         }
-        function updateUncheckedSeat(){
-            $(".SeatHead#"+(checkedCount+1)).hide();
+        function updateUncheckedSeat(label){
+            const keys = getKeyByValue(dictionary, label);
+            $(".SeatHead#"+keys).hide();
+            dictionary[keys] = "blank";
+        }
+        function getKeyByValue(object, value) {
+            return Object.keys(object).find(key => object[key] === value);
         }
     });
 </script>
