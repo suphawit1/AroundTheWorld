@@ -10,11 +10,53 @@
 {% endblock %}
 
 {% block content %}
-{% if error_mess != '' %}
+{% if error_mess == 'Pass' %}
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="215.434px" height="215.434px" viewBox="0 0 215.434 215.434" enable-background="new 0 0 215.434 215.434"
+	 xml:space="preserve">
+<g>
+	<circle fill="#54C147" cx="107.717" cy="107.717" r="106.299"/>
+	<polygon fill="#FFFFFF" points="96.977,121.718 145.084,50.79 168.752,69.02 103.583,164.647 46.678,120.299 63.562,96.402 	"/>
+</g>
+</svg>
+    <p>สมัครสมาชิกเสร็จสมบูรณ์</p>
+    <button onclick="HomeRedirect()">Ok</button>
+  </div>
+</div>
 <script>
-  var error = "{{ error_mess|escapejs }}";
-  alert(error);
+  var modal = document.getElementById("myModal");
+  function showAlert() {
+    modal.style.display = "block";
+  }
+  function closeModal() {
+    modal.style.display = "none";
+  }
+  function HomeRedirect() {
+    window.location.href = "/";;
+  }
+  showAlert()
 </script>
+{% elif error_mess != '' %}
+<div id="myModal" class="modal">
+  <div class="modal-content">
+    <svg height="32" style="overflow:visible;enable-background:new 0 0 32 32" viewBox="0 0 32 32" width="32" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><g><g id="Error_1_"><g id="Error"><circle cx="16" cy="16" id="BG" r="16" style="fill:#D72828;"/><path d="M14.5,25h3v-3h-3V25z M14.5,6v13h3V6H14.5z" id="Exclamatory_x5F_Sign" style="fill:#E6E6E6;"/></g></g></g></svg>
+    <p>{{ error_mess|linebreaksbr }}</p>
+    <button onclick="closeModal()">Ok</button>
+  </div>
+</div>
+<script>
+  var modal = document.getElementById("myModal");
+  function showAlert() {
+    modal.style.display = "block";
+  }
+  function closeModal() {
+    modal.style.display = "none";
+  }
+  showAlert()
+</script>
+
 {% endif %}
 <section class="u-clearfix u-gradient u-section-1" id="sec-a296">
   <div class="u-clearfix u-sheet u-sheet-1">
@@ -66,10 +108,6 @@
                   <div class="u-align-center u-form-group u-form-submit u-label-top">
                     <button type="submit" value="submit" class="u-btn u-btn-round u-btn-submit u-button-style u-custom-font u-heading-font u-radius-18 u-block-c20c-22">Signup</button>
                   </div>
-                  <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-                  <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
-                  <input type="hidden" value="" name="recaptchaResponse">
-                  <input type="hidden" name="formServices" value="62e48632-8d3e-6010-b20d-3410420628e2">
                 </form>
               </div>
             </div>

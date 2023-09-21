@@ -1,17 +1,19 @@
 from django.shortcuts import render
 from .forms import RegisterForm,UserEditForm
-from django.contrib.auth import login
+from django.contrib.auth import login,authenticate,logout
 from django.http import HttpRequest,HttpResponseRedirect
 from app_user.models import Customer
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from app_general.models import Booking
+from django.contrib.auth.forms import AuthenticationForm
 
 # Create your views here.
 
 def register(request:HttpRequest):
     error_messages = ''
     if request.method == "POST":
+        error_messages = ''
         form = RegisterForm(request.POST)
 
         error_user = form.errors.get('username')
@@ -22,18 +24,19 @@ def register(request:HttpRequest):
         errors_email = form.errors.get('Email')
 
         if errors_pass:
-            error_messages += "โปรดระบุรหัสผ่านให้ตรงกัน\n"
+            error_messages += "***โปรดระบุรหัสผ่านให้ตรงกัน***\n"
         if  error_user:
-            error_messages += "ชื่อผู้ใช้นั้นได้ถูกใช้ไปแล้ว\n"
+            error_messages += "***ชื่อผู้ใช้นั้นได้ถูกใช้ไปแล้ว***\n"
         if  errors_name or errors_lname:
-            error_messages += "ชื่อและนามสกุลต้องเป็นตัวอักษรภาษาไทยเท่านั้น\n"
+            error_messages += "***ชื่อและนามสกุลต้องเป็นตัวอักษรภาษาไทยเท่านั้น***\n"
         if  errors_contract:
-            error_messages += "เบอร์ติดต่อต้องเป็นตัวเลขเท่านั้น\n"
+            error_messages += "***เบอร์ติดต่อต้องเป็นตัวเลขเท่านั้น***\n"
         if  errors_email:
-            error_messages += "โปรดป้อนที่อยู่อีเมล์ให้ถูกต้อง\n"
+            error_messages += "***โปรดป้อนที่อยู่อีเมล์ให้ถูกต้อง***\n"
             
         if form.is_valid():
             user = form.save()
+            error_messages = 'Pass'
 
             FirstNamedata = form.cleaned_data['FirstName']
             LastNamedata = form.cleaned_data['LastName']
@@ -43,12 +46,35 @@ def register(request:HttpRequest):
             Customer.objects.create(user=user, CusFirstName=FirstNamedata, CusLastName=LastNamedata, CusContract=Contractdata, CusEmail=Emaildata)
 
             login(request, user)
-
-            return HttpResponseRedirect(reverse('home'))
     else:
         form = RegisterForm()
     context = {"form":form,"error_mess":error_messages}
     return render(request, "app_user/register.html", context)
+
+def loginview(request):
+    error = 0
+    if request.method == 'POST':
+        error = 0
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                # Redirect to a success page, for example, the home page
+                return HttpResponseRedirect(reverse('home'))
+        else:
+            error = 1
+    else:
+        form = AuthenticationForm()
+    context = {'form': form,'error':error}
+    return render(request, "app_user/login.html", context)
+
+
+def logoutview(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))
 
 @login_required
 def dashboard_user(request):

@@ -10,7 +10,7 @@ class Countrys(models.Model):
         return '{}'.format(self.CountryName)
     
 class Locations(models.Model):
-    LocationName = models.CharField(max_length = 25,primary_key=True)
+    LocationName = models.CharField(max_length = 50,primary_key=True)
     CountryID = models.ForeignKey(Countrys,on_delete=models.CASCADE)
 
     def __str__(self) -> str:
