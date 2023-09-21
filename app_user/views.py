@@ -60,9 +60,11 @@ def loginview(request):
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
             user = authenticate(request, username=username, password=password)
+            next_url = request.POST.get('next')
             if user is not None:
                 login(request, user)
-                # Redirect to a success page, for example, the home page
+                if next_url:
+                    return HttpResponseRedirect(next_url)
                 return HttpResponseRedirect(reverse('home'))
         else:
             error = 1

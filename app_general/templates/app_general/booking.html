@@ -154,10 +154,10 @@
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\ราคา " + price * checkedCount + " บาท");
         }
         function updateCheckedSeat(label) {
-            $("#checkedSeat"+checkedCount).html("เลขที่นั่ง:"+label);
             for (const key in dictionary) {
                 const value = dictionary[key];
                 if (value == "blank"){
+                    $("#checkedSeat"+key).html("เลขที่นั่ง:"+label);
                     $(".SeatHead#"+key).show();
                     dictionary[key] = label;
                     break;
