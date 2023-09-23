@@ -9,7 +9,7 @@ class Payment(models.Model):
     ]
     PayNumber = models.AutoField(primary_key=True)
     cusID = models.ForeignKey('app_user.Customer',on_delete=models.CASCADE)
-    status = models.TextField(choices=STATUS, default="pending")
+    status = models.TextField(choices=STATUS, default="รอการชำระ")
     Amount = models.FloatField()
 
 class Booking(models.Model):

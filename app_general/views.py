@@ -73,7 +73,7 @@ def payment(request, pay_num):
     if request.method == 'POST':
         form = Fakecardform(request.POST)
         if form.is_valid():
-            one_payment.status = "completed"
+            one_payment.status = "สำเร็จ"
             one_payment.save()
             return HttpResponseRedirect(reverse('home'))
     else:
