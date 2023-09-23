@@ -70,6 +70,7 @@ def payment(request, pay_num):
     Cus = Customer.objects.get(user=logged_in_user)
     one_book = Booking.objects.filter(PayNumber = pay_num)
     one_payment = Payment.objects.get(PayNumber = pay_num)
+    one_tour = one_book[0].TourName
     if request.method == 'POST':
         form = Fakecardform(request.POST)
         if form.is_valid():
@@ -79,5 +80,5 @@ def payment(request, pay_num):
     else:
         form = Fakecardform()
 
-    context = {'form':form,'book':one_book[0],'payment':one_payment,'cus':Cus}
+    context = {'form':form,'book':one_book[0],'payment':one_payment,'cus':Cus,'tour':one_tour}
     return render(request,'app_general/payment.html',context)

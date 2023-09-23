@@ -1,36 +1,51 @@
 {% extends 'app_general/components/base.html'%}
 {% block content%}
-    <form id="myForm" method="post">
-        <h1>Payment</h1>
-        <label for="choice">โปรดเลือกวิธีการชำระเงิน:</label>
-            <input type="radio" id="option1" name="options">
-            <label for="option1">ชำระเงินด้วยบัตรเครดิต</label>
-
-            <input type="radio" id="option2" name="options">
-            <label for="option2">ชำระด้วยเงินในระบบ</label>
-            
-        {% csrf_token %}
-        <div id="div1" style="display: none;">
-            <h3>ชำระเงินด้วยบัตรเครดิต</h3>
-            <p> {{form.Name.label}}: {{form.Name}}</p>
-            <p> {{form.CreditCard.label}}: {{form.CreditCard}}</p>
-            <p> {{form.CVV.label}}: {{form.CVV}} หมดอายุ(เดือน/ปี): {{form.exmonth}} / {{form.exyear}}</p>
-        </div>
-        <div id="div2" style="display: none;">
-            <h3>ชำระด้วยเงินในระบบ</h3>
-            <p>ยอดเงินในระบบ: {{cus.Credits|floatformat:'g'}} บาท</p>
-            <p>ราคา: {{payment.Amount|floatformat:'g'}} บาท</p>
-            <p id="result"></p>
-
-        </div>
-        <div style="background-color: rgb(175, 175, 175); width: 200px;">
-            <p>{{payment.Amount}} บาท</p>
-            <p>โปรดชำระภายใน</p><div id="countdown"></div>
-            <p><button type = "submit" id="submitButton">จ่าย</button></p>
-        </div>
+<div class="skyBG">
+    <div class="mainpage">
+        <form id="myForm" method="post">
+            <h1>Payment</h1>
+            <label for="choice">โปรดเลือกวิธีการชำระเงิน:</label>
+            {% csrf_token %}
+            <section class="accordion accordion--radio">
+                <div class="tab">
+                    <input type="radio" id="option1" name="options">
+                    <label for="option1" class="tab__label">ชำระเงินด้วยบัตรเครดิต</label>
+                    <div class="tab__content">
+                        <h3>ชำระเงินด้วยบัตรเครดิต</h3>
+                        <p>{{form.Name.label}}: {{form.Name}}</p>
+                        <p>{{form.CreditCard.label}}: {{form.CreditCard}}</p>
+                        <p>{{form.CVV.label}}: {{form.CVV}} หมดอายุ(เดือน/ปี): {{form.exmonth}} / {{form.exyear}}</p>
+                    </div>
+                </div>
+                <div class="tab">
+                    <input type="radio" id="option2" name="options">
+                    <label for="option2" class="tab__label">ชำระด้วยเงินในระบบ</label>
+                <div class="tab__content">
+                    <h3>ชำระด้วยเงินในระบบ</h3>
+                    <p>ยอดเงินในระบบ: {{cus.Credits|floatformat:'g'}} บาท</p>
+                    <p>ราคา: {{payment.Amount|floatformat:'g'}} บาท</p>
+                    <p id="result"></p>
+                </div>
+                </div>
+            </section>
         
-    </form>
-
+            <div class = "PaySummary">
+                <h3 id="totalPay">สรุปรายการ</h3>
+                <div class = "Pay_info">
+                    <p class="left-text">{{tour.TourName}}</p>  <p class="right-text"> {{tour.price}} บาท</p>
+                </div>
+                <div class = "Pay_info">
+                    <p class="left-text">จำนวน</p> <p class="right-text" > <span id="number">0</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ที่</p>
+                </div>
+                <div class = "Pay_info" id="total">
+                    <p class="left-text">ราคารวม</p>  <p class="right-text" >{{payment.Amount}} บาท</p> 
+                </div>
+                <p id="totalPaybut"><button type = "submit" id="submitButton">จ่าย</button></p>
+                <p id="totaltime">โปรดชำระภายใน <span id="countdown">0</span> </p>
+            </div>  
+        </form>
+    </div>
+</div>
 
 <script>
     const option1Radio = document.getElementById("option1");
@@ -42,15 +57,32 @@
     const CVVField = document.getElementById('CVV');
     const exmonthField = document.getElementById('exmonth');
     const exyearField = document.getElementById('card');
+    const radioButtons = document.querySelectorAll('input[type="radio"]');
+    const tab = document.querySelectorAll('.tab');
+
+    tab.forEach((tab, index) => {
+        tab.addEventListener('click', () => {
+            radioButtons[index].checked = true;
+  });
+});
 
     var form = document.getElementById("myForm");
     var submitButton = document.getElementById("submitButton");
 
     var cusCredits = "{{ cus.Credits }}";
     var paymentAmount = "{{ payment.Amount }}";
+    var tourprice = "{{tour.price}}";
+    var number = paymentAmount/tourprice;
     var result = cusCredits - paymentAmount;
     var formattedNumber = addCommasToInteger(result);
-    document.getElementById("result").innerHTML = "คงเหลือ " + formattedNumber + " บาท";
+    if (result >= 0){
+        document.getElementById("result").innerHTML = "คงเหลือ " + formattedNumber + " บาท";
+    }
+    else{
+        document.getElementById("result").innerHTML = "ยอดเงินของคุณไม่เพียงพอ";
+    }
+    document.getElementById("number").innerHTML = number;
+    
 
     option1Radio.addEventListener("change", () => {
         if (option1Radio.checked) {
@@ -139,14 +171,14 @@
         var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         // Display the countdown on your HTML element
-        document.getElementById("countdown").innerHTML = hours + "ชั่วโมง. " + minutes + "นาที.";
+        document.getElementById("countdown").innerHTML = hours + " ชั่วโมง. " + minutes + " นาที."+seconds+" วินาที";
 
         // If the countdown reaches zero, do something (e.g., show a message)
         if (timeLeft < 0) {
             clearInterval(countdown);
             document.getElementById("countdown").innerHTML = "Countdown expired!";
         }
-    }, 60000); // Update every 1 second (1000 milliseconds)
+    }, 1000); // Update every 1 second (1000 milliseconds)
     function addCommasToInteger(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     }

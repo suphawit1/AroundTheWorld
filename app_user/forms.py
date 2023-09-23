@@ -32,11 +32,11 @@ class RegisterForm(UserCreationForm):
         fields = ('username', 'password1', 'password2', 'FirstName','LastName','Contract','Email')
 
 class UserEditForm(forms.ModelForm):
-    FirstName = forms.CharField(label='ชื่อจริง', widget=forms.TextInput, validators=[alpha_validator])
-    LastName = forms.CharField(label='นามสกุล', widget=forms.TextInput, validators=[alpha_validator])
-    Contract = forms.CharField(label='เบอร์โทรศัพท์', widget=forms.TextInput,validators=[numeric_validator])
-    Email = forms.EmailField(label='อีเมล์', widget=forms.TextInput)
+    CusFirstName = forms.CharField(label='ชื่อจริง', widget=forms.TextInput, validators=[alpha_validator])
+    CusLastName = forms.CharField(label='นามสกุล', widget=forms.TextInput, validators=[alpha_validator])
+    CusContract = forms.CharField(label='เบอร์โทรศัพท์', widget=forms.TextInput,validators=[numeric_validator])
+    CusEmail = forms.EmailField(label='อีเมล์', widget=forms.TextInput)
 
     class Meta:
         model = Customer
-        fields = ("FirstName","LastName","Contract","Email")
+        fields = ("CusFirstName","CusLastName","CusContract","CusEmail")

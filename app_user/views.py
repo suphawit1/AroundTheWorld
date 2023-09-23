@@ -85,6 +85,7 @@ def dashboard_user(request):
     obj = Customer.objects.get(pk=Cus.CusID)
     if request.method == "POST":
         form = UserEditForm(request.POST,instance=obj)
+        print(form.errors)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect(request.path_info)

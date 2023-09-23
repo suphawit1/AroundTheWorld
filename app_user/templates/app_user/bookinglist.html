@@ -7,7 +7,7 @@
     <h1>Booking Tour</h1>
     {% for book in booklist %}
         <h3><a href="#">{{book.TourName}}</a></h3>
-        {% if book.PayNumber.status == 'pending' %}
+        {% if book.PayNumber.status == 'รอการชำระ' %}
         <p>สถานะการชำระเงิน:{{book.PayNumber.status}}</p>
         <p><a href="{% url 'payment' book.PayNumber.PayNumber %} ">ชำระเงิน&nbsp;&nbsp;&nbsp;&nbsp;</a>โปรดชำระภายใน 1 วันหลังการจอง</p>
         {% else %}

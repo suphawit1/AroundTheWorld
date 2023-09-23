@@ -22,9 +22,20 @@ button{
   vertical-align: middle;
   white-space: nowrap;
 }
-.Booking_page{
-    width: 100vw;
+.mainpage{
+    position: relative;
+    width: 60vw;
     height: 100vh;
+    left: 20vw;
+    background-color: white;
+    overflow: auto;
+}
+.Booking_page,.skyBG{
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     background-image: url('/static/app_general/sky.jpg');
 }
 #BookingSeat{
@@ -68,7 +79,7 @@ input.Airplaneseatbooked{
     top: 82px;
     width: 550px;
     height: 600px;
-    align-items: center;  
+    align-items: center; 
 }
 .Bookingseat_summary{
     position: relative;
@@ -115,4 +126,100 @@ h2{
     top: 266px;
     width: 100px;
     height: 550px;
+}
+.tab:not(.tab__content):hover{
+    background: rgb(0, 81, 255);
+}
+.tab input[type="radio"] {
+    position: relative;
+    top: 37px;
+    overflow: hidden;
+}
+.tab__content {
+    max-height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+    background-color: wheat;
+    color: black;
+}
+  .tab input:checked ~ .tab__content {
+    max-height: 500px;
+}
+.accordion {
+    background-color: rgb(44, 110, 250);
+    color: white    ;
+    border: 2px solid;
+    border-radius: 1rem;
+    overflow: hidden;
+    width: 100%;
+}
+.tab__label{
+    display: flex;
+    color: white;
+    background: rgb(44, 110, 250);
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 1rem;
+} 
+.tab__label:hover{
+    display: flex;
+    color: white;
+    background: rgb(0, 81, 255);
+    justify-content: space-between;
+    cursor: pointer;
+    padding: 1rem;
+} 
+.tab__label::after {
+    content: "\276F";
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    transform: rotate(90deg);
+    transition: all 0.35s;
+}
+.tab input:checked + .tab__label::after {
+    transform: rotate(270deg);
+}
+.tab__close {
+    justify-content: flex-end;
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+}
+.Pay_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+}
+.Pay_info[id = "total"]{
+    border-top: 3px solid #000;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.PaySummary{
+    position: relative;
+    background-color: #cac9c6;
+    border: 5px solid #000;
+    width: 90%;
+    left: 50px;
+    border-top-right-radius: 50px ;
+    border-top-left-radius: 50px ;
+    align-items: center; 
+}
+#totalPay{
+    margin-left: 45%;
+}
+#totalPaybut{
+    margin-left: 47%;
+}
+#totaltime{
+    margin-left: 35%;
+}
+
+.left-text {
+    margin-right: 10px; /* Margin on the right side of the left text */
+}
+  
+.right-text {
+    margin-left: 10px; /* Margin on the left side of the right text */
 }
