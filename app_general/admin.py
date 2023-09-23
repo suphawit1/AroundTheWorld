@@ -5,12 +5,14 @@ from app_general.models import *
 
 
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ['TourName']
-    search_fields = ['TourName']
+    list_display = ['BookID','TourName','FullName','Seat','Room','BookTime']
+    search_fields = ['TourName__TourName','FullName']
+    list_filter = ['TourName__TourName']
 
 class PayAdmin(admin.ModelAdmin):
     list_display = ['cusID','status','Amount']
-    search_fields = ['cusID']
+    search_fields = ['cusID','Amount']
+    list_filter = ['status']
 
 
 admin.site.register(Booking, BookingAdmin)

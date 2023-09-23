@@ -11,7 +11,7 @@ class Countrys(models.Model):
     
 class Locations(models.Model):
     LocationName = models.CharField(max_length = 50,primary_key=True)
-    CountryID = models.ForeignKey(Countrys,on_delete=models.CASCADE)
+    CountryName = models.ForeignKey(Countrys,on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return '{}'.format(self.LocationName)
