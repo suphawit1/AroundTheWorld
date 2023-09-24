@@ -3,6 +3,7 @@
     <a href="{% url 'tours'%}" style="margin-right: 150px;">Tours</a>
     {% if user.is_authenticated %}
     <a href="{% url 'dashboard_user'%}" style="margin-right: 150px;">{{ user.username }}</a>
+    <a href="{% url 'dashboard_credit' %}" style="margin-right: 150px;">Credit : {{user_credit}} บาท</a>
     <a href="{% url 'logout' %}" style="margin-right: 150px;">ออกจากระบบ</a>
     {% else %}
     <a href="{% url 'login' %}" style="margin-right: 150px;">เข้าสู่ระบบ</a>

@@ -1,16 +1,60 @@
 {% extends 'app_general/components/base.html'%}
+{% load static %}
 
 {% block site_title %} Register - {% endblock %}
 
 {% block content %}
-    <h3 class="content-title">dashboard</h3>
-    <form action="{% url 'dashboard_user' %}" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <p>
-            <button type = "submit">บันทึก</button>
-        </p>
-    </form>
-    <a href="{% url 'dashboard_book' %}">ข้อมูลการจอง</a>
+<div class="skyBG">
+    <div class="mainpage">
+        <div class = "user-Head">
+            <h1>หน้าหลักผู้ใช้</h1>
+        </div>
+            {% if check == 1 %}
+            <div id="myModal" class="modal">
+            <div class="modal-content">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                width="215.434px" height="215.434px" viewBox="0 0 215.434 215.434" enable-background="new 0 0 215.434 215.434"
+                xml:space="preserve">
+            <g>
+                <circle fill="#54C147" cx="107.717" cy="107.717" r="106.299"/>
+                <polygon fill="#FFFFFF" points="96.977,121.718 145.084,50.79 168.752,69.02 103.583,164.647 46.678,120.299 63.562,96.402 	"/>
+            </g>
+            </svg>
+                <p>แก้ไขข้อมูลสำเร็จ</p>
+                <button onclick="closeModal()">Ok</button>
+            </div>
+            </div>
+                <script>
+                var modal = document.getElementById("myModal");
+                function showAlert() {
+                    modal.style.display = "block";
+                }
+                function closeModal() {
+                    modal.style.display = "none";
+                }
+                showAlert()
+                </script>
+            {% endif %}
+            <div class="left-div">
+                <p><a href="{% url 'dashboard_user' %}">ข้อมูลผู้ใช้</a></p>
+                <p><a href="{% url 'dashboard_book' %}">ข้อมูลการจอง</a></p>
+                <p><a href="{% url 'dashboard_credit' %}">เครดิต</a></p>
+            </div>
+        <div class="right-div" id="dashboard">
+        <h2 class="content-title">ข้อมูลผู้ใช้</h2>
+            <form action="{% url 'dashboard_user' %}" method="post">
+                {% csrf_token %}
+                <p>{{form.CusFirstName.label}}: {{form.CusFirstName}} {{form.CusFirstName.errors}}</p>
+                <p>{{form.CusLastName.label}}: {{form.CusLastName}} {{form.CusLastName.errors}}</p>
+                <p>{{form.CusContract.label}}: {{form.CusContract}} {{form.CusContract.errors}}</p>
+                <p>{{form.CusEmail.label}}: {{form.CusEmail}} {{form.CusEmail.errors}}</p>
+                <p>
+                    <button type = "submit">บันทึก</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+        
 
 {% endblock %}

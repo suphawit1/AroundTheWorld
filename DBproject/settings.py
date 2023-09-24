@@ -67,6 +67,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'app_general.Credit.custom_context'
             ],
         },
     },
@@ -80,7 +81,7 @@ WSGI_APPLICATION = 'DBproject.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'django_aroundtheworldFinal',
+        'NAME': 'Test',
         'USER': 'admin',
         'PASSWORD':'y#Z180k+',
         'HOST': 'dbproject.cx11ha9xryk0.ap-southeast-2.rds.amazonaws.com',

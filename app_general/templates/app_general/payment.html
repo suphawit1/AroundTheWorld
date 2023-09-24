@@ -4,6 +4,9 @@
     <div class="mainpage">
         <form id="myForm" method="post">
             <h1>Payment</h1>
+            {% if payment.status == "ยกเลิก" %}
+                <h2>รายการนี้ถูกยกเลิกแล้ว(หมดเวลาชำระเงิน)</h2>
+            {% else %}
             <label for="choice">โปรดเลือกวิธีการชำระเงิน:</label>
             {% csrf_token %}
             <section class="accordion accordion--radio">
@@ -44,6 +47,7 @@
                 <p id="totaltime">โปรดชำระภายใน <span id="countdown">0</span> </p>
             </div>  
         </form>
+        {% endif %}
     </div>
 </div>
 

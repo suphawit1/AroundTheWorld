@@ -1,0 +1,77 @@
+{% extends 'app_general/components/base.html'%}
+
+{% block site_title %} Register - {% endblock %}
+
+{% block content %}
+<div class="skyBG">
+    <div class="mainpage">
+        <div class = "user-Head">
+            <h1>หน้าหลักผู้ใช้</h1>
+        </div>
+        {% if check == 1 %}
+            <div id="myModal" class="modal">
+            <div class="modal-content">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                width="215.434px" height="215.434px" viewBox="0 0 215.434 215.434" enable-background="new 0 0 215.434 215.434"
+                xml:space="preserve">
+            <g>
+                <circle fill="#54C147" cx="107.717" cy="107.717" r="106.299"/>
+                <polygon fill="#FFFFFF" points="96.977,121.718 145.084,50.79 168.752,69.02 103.583,164.647 46.678,120.299 63.562,96.402 	"/>
+            </g>
+            </svg>
+                <p>เติมเครดิตสำเร็จ</p>
+                <button onclick="closeModal()">Ok</button>
+            </div>
+            </div>
+                <script>
+                var modal = document.getElementById("myModal");
+                function showAlert() {
+                    modal.style.display = "block";
+                }
+                function closeModal() {
+                    modal.style.display = "none";
+                }
+                showAlert()
+                </script>
+            {% endif %}
+        <div class="left-div">
+            <p><a href="{% url 'dashboard_user' %}">ข้อมูลผู้ใช้</a></p>
+            <p><a href="{% url 'dashboard_book' %}">ข้อมูลการจอง</a></p>
+            <p><a href="{% url 'dashboard_credit' %}">เครดิต</a></p>
+        </div>
+        <div class="right-div" id="dashboard">
+        <h2 class="content-title">ข้อมูลเครดิต</h2>
+        <h3>จำนวนเครดิต {{user_credit}} บาท</h3>
+        <form action="{% url 'dashboard_credit' %}" method="post">
+            {% csrf_token %}
+            <label for="option1">
+                <input type="radio" id="option1" name="addCredit" value= 100> 100 เครดิต
+            </label>
+            
+            <label for="option2">
+                <input type="radio" id="option2" name="addCredit" value= 500> 500 เครดิต
+            </label>
+            
+            <label for="option3">
+                <input type="radio" id="option3" name="addCredit" value= 1000> 1000 เครดิต
+            </label>
+            <label for="option4">
+                <input type="radio" id="option4" name="addCredit" value= 5000> 5000 เครดิต
+            </label>
+            
+            <label for="option5">
+                <input type="radio" id="option5" name="addCredit" value= 10000> 10000 เครดิต
+            </label>
+            
+            <label for="option6">
+                <input type="radio" id="option6" name="addCredit" value= 20000> 20000 เครดิต
+            </label>
+            <p>
+                <button type = "submit">เติมเครดิต</button>
+            </p>
+        </form>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

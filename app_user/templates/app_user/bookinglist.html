@@ -3,22 +3,32 @@
 {% block site_title %} Register - {% endblock %}
 
 {% block content %}
-
-    <h1>Booking Tour</h1>
-    {% for book in booklist %}
-        <h3><a href="#">{{book.TourName}}</a></h3>
-        {% if book.PayNumber.status == 'รอการชำระ' %}
-        <p>สถานะการชำระเงิน:{{book.PayNumber.status}}</p>
-        <p><a href="{% url 'payment' book.PayNumber.PayNumber %} ">ชำระเงิน&nbsp;&nbsp;&nbsp;&nbsp;</a>โปรดชำระภายใน 1 วันหลังการจอง</p>
-        {% else %}
-        <p>สถานะการชำระเงิน:{{book.PayNumber.status}}</p>
-        {% endif %}
-        <p>วันเดินทาง:{{book.TourName.Day}}</p>
-    {% empty %}
-        <p>ไม่พบข้อมูลการจอง</p>
-    {% endfor %}
-    
-    
-    
+<div class="skyBG">
+    <div class="mainpage">
+        <div class = "user-Head">
+            <h1>หน้าหลักผู้ใช้</h1>
+        </div>
+        <div class="left-div">
+            <p><a href="{% url 'dashboard_user' %}">ข้อมูลผู้ใช้</a></p>
+            <p><a href="{% url 'dashboard_book' %}">ข้อมูลการจอง</a></p>
+            <p><a href="{% url 'dashboard_credit' %}">เครดิต</a></p>
+        </div>
+        <div class="right-div" id="dashboard">
+        <h2 class="content-title">ข้อมูลการจอง</h2>
+            {% for book in booklist %}
+                <h3>{{book.TourName}}</h3>
+            {% if book.PayNumber.status == 'รอการชำระ' %}
+                <p>สถานะการชำระเงิน:{{book.PayNumber.status}}</p>
+                <p><a href="{% url 'payment' book.PayNumber.PayNumber %} ">ชำระเงิน&nbsp;&nbsp;&nbsp;&nbsp;</a>โปรดชำระภายใน 1 วันหลังการจอง</p>
+            {% else %}
+                <p>สถานะการชำระเงิน:{{book.PayNumber.status}}</p>
+            {% endif %}
+                <p>วันเดินทาง:{{book.TourName.Day}}</p>
+            {% empty %}
+                <p>ไม่พบข้อมูลการจอง</p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}

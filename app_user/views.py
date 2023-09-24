@@ -7,6 +7,8 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 from app_general.models import Booking
 from django.contrib.auth.forms import AuthenticationForm
+from datetime import timedelta
+from django.utils import timezone
 
 # Create your views here.
 
@@ -83,12 +85,13 @@ def dashboard_user(request):
     logged_in_user = request.user
     Cus = Customer.objects.get(user=logged_in_user)
     obj = Customer.objects.get(pk=Cus.CusID)
+    checkedit = 0
     if request.method == "POST":
         form = UserEditForm(request.POST,instance=obj)
         print(form.errors)
         if form.is_valid():
+            checkedit = 1
             form.save()
-            return HttpResponseRedirect(request.path_info)
     else:
         initial_values = {
             'FirstName': Cus.CusFirstName,
@@ -97,11 +100,26 @@ def dashboard_user(request):
             'Email': Cus.CusEmail
         }
         form = UserEditForm(initial=initial_values,instance=obj)
-    context = {"form":form}
+    context = {"form":form,"check":checkedit}
     return render(request, "app_user/dashboard.html", context)
 
 @login_required
 def dashboard_book(request):
+    logged_in_user = request.user
+    Cus = Customer.objects.get(user=logged_in_user)
+    
+    bookedobj = Booking.objects.filter(cusID=Cus)
+    
+    one_day_threshold = timedelta(hours=17)
+    
+    current_datetime = timezone.now()
+    for i in bookedobj:
+        time_difference = current_datetime - i.BookTime
+        if time_difference >= one_day_threshold:
+            i.PayNumber.status = "ยกเลิก"
+            i.PayNumber.save()
+            i.delete()
+            continue
     logged_in_user = request.user
     Cus = Customer.objects.get(user=logged_in_user)
     
@@ -112,3 +130,19 @@ def dashboard_book(request):
 
     context = {"booklist":booklist}
     return render(request, "app_user/bookinglist.html", context)
+
+@login_required
+def dashboard_credit(request):
+    check_credit = 0
+    logged_in_user = request.user
+    Cus = Customer.objects.get(user=logged_in_user)
+
+    if request.method == "POST":
+        add_Credit = request.POST.get('addCredit')
+        Cus.Credits += int(add_Credit)
+        check_credit = 1
+        Cus.save()
+
+    context = {'check':check_credit}
+
+    return render(request, "app_user/credit.html", context)
