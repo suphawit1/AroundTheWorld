@@ -118,6 +118,7 @@
     // Set the target date and time for the countdown (assuming booktime is correctly parsed)
     var inputDateStr = "{{book.BookTime}}";
 
+
     // Define a mapping for Thai month names to English month names
     var thaiMonthMap = {
     "มกราคม": "01",
@@ -136,6 +137,7 @@
 
     // Split the input string into date and time parts
     var parts = inputDateStr.split(", ");
+    const hours = parts[1].split(":");
 
     // Extract the Thai month name
     var thaiMonth = parts[0].split(" ")[1];
@@ -151,8 +153,15 @@
     // Extract the time
     var time = parts[1];
 
+    if (hours[0] < 10){
+        hour = "0"+hours[0]
+    }else{
+        hour = hours[0]
+    }
+
     // Create a formatted date string in English format
-    var formattedDateStr = year+ "-" +englishMonth + "-" + day + "T" + time+"Z";
+
+    var formattedDateStr = year+ "-" +englishMonth + "-" + day + "T" + hour+":"+hours[1]+"Z";
 
     // Create a JavaScript Date object from the formatted date string
     var formattedDate = new Date(formattedDateStr);
@@ -175,7 +184,7 @@
         var seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
 
         // Display the countdown on your HTML element
-        document.getElementById("countdown").innerHTML = hours + " ชั่วโมง. " + minutes + " นาที."+seconds+" วินาที";
+        document.getElementById("countdown").innerHTML = hours + " ชั่วโมง. " + minutes + " นาที. "+seconds+" วินาที";
 
         // If the countdown reaches zero, do something (e.g., show a message)
         if (timeLeft < 0) {
