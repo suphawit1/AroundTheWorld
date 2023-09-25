@@ -5,7 +5,9 @@ def custom_context(request):
 
     if request.user.is_authenticated:
         logged_in_user = request.user
-        Cus = Customer.objects.get(user=logged_in_user)
-        user_credit = Cus.Credits
-
+        try:
+            Cus = Customer.objects.get(user=logged_in_user)
+            user_credit = Cus.Credits
+        except:
+            user_credit = None
     return {'user_credit': user_credit}
