@@ -51,7 +51,7 @@ def booking(request:HttpRequest, tour_name):
     bookedroomlist = []
     for i in bookedobj:
         time_difference = current_datetime - i.BookTime
-        if time_difference >= one_day_threshold:
+        if time_difference >= one_day_threshold and i.PayNumber.status == "รอการชำระ":
             i.PayNumber.status = "ยกเลิก"
             i.PayNumber.save()
             i.delete()

@@ -5,7 +5,7 @@ from django.http import HttpRequest,HttpResponseRedirect
 from app_user.models import Customer
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-from app_general.models import Booking
+from app_general.models import Booking,Payment
 from django.contrib.auth.forms import AuthenticationForm
 from datetime import timedelta
 from django.utils import timezone
@@ -115,7 +115,7 @@ def dashboard_book(request):
     current_datetime = timezone.now()
     for i in bookedobj:
         time_difference = current_datetime - i.BookTime
-        if time_difference >= one_day_threshold:
+        if time_difference >= one_day_threshold and bookedobj[0].PayNumber.status == "รอการชำระ":
             i.PayNumber.status = "ยกเลิก"
             i.PayNumber.save()
             i.delete()
