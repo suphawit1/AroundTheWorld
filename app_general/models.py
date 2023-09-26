@@ -22,4 +22,3 @@ class Booking(models.Model):
     cusID = models.ForeignKey('app_user.Customer',on_delete=models.CASCADE)
     PayNumber = models.ForeignKey(Payment,on_delete=models.CASCADE)
 
-

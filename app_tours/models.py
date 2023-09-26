@@ -24,7 +24,6 @@ class Accommodation(models.Model):
     def __str__(self) -> str:
         return '{}'.format(self.AccomName)
 
-    
 class Tours(models.Model):
     STATUS = [
         ("เปิด","เปิด"),
@@ -41,7 +40,8 @@ class Tours(models.Model):
     Day = models.DateField()
     price = models.FloatField(default=0)
     FlightNo = models.IntegerField()
+    Detail = models.TextField(null=True, blank= True)
+    immage = models.CharField(max_length = 50, null=True, blank= True)
     def __str__(self) -> str:
         return '{}'.format(self.TourName)
 
-    

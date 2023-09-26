@@ -27,6 +27,8 @@ class Tourlocation(admin.ModelAdmin):
 class CombinedTourAdmin(Tourlocation, TourAdmin):
     pass
 
+
+
 admin.site.register(Tours, CombinedTourAdmin)
 admin.site.register(Countrys, CountrysAdmin)
 admin.site.register(Locations, LocationsAdmin)

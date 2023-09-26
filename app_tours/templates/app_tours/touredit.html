@@ -1,0 +1,146 @@
+{% extends 'app_general/components/base.html'%}
+{% block site_title%}tour |{% endblock site_title%}
+{% load static %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'app_tour/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'app_tour/singaporetour.css' %}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+{% endblock %}
+{% block content%}
+    <body data-path-to-root="./" class="u-body u-xl-mode" data-lang="en">
+        <section class="u-clearfix u-custom-color-7 u-section-1" id="sec-a06d">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="custom-expanded u-container-style u-group u-white u-group-1">
+              <div class="u-container-layout u-container-layout-1">
+                <div class="u-border-2 u-border-grey-75 u-container-style u-group u-radius-15 u-shape-round u-white u-group-2">
+                  <div class="u-container-layout u-container-layout-2">
+                    <p class="u-text u-text-default u-text-1"><input class = "edithead" type="text" id="TourName" placeholder="ชื่อทัวร์">
+                      <br><input class = "edithead" type="text" id="Tourtype" placeholder="ประเภททัวร์">
+                      <br>
+                        <input class = "edithead" type="text" id="Duration" placeholder="ระยะเวลา">
+                    </p>
+                    <p class="u-text u-text-default u-text-2"><input class = "edithead" type="text" id="Tour" placeholder="ทัวร์">
+                      <br>เที่ยวเมือง :&nbsp;<span style="font-weight: 400;">Singapore(สิงคโปร์)</span>
+                      <br>
+                      <span style="font-weight: 400;">
+                        <span style="font-weight: 700;">สายการบิน :</span> Singapore Airlines
+                      </span>
+                    </p>
+                    <h2 class="u-text u-text-custom-color-5 u-text-default u-text-3">ราคาเริ่มต้น (บาท)<br>
+                      <span style="font-size: 3rem;">฿15,900</span>
+                      <br>
+                    </h2>
+                    <button class="u-border-none u-btn u-btn-round u-button-style u-custom-color-5 u-radius-30 u-btn-1" rel="nofollow">จองทัวร์</button>
+                  </div>
+                </div>
+                <div class="u-border-2 u-border-grey-75 u-container-style u-group u-radius-15 u-shape-round u-white u-group-3">
+                  <div class="u-container-layout u-container-layout-3">
+                    <h2 class="u-text u-text-default u-text-4"> ไฮไลท์ทัวร์&nbsp;Highlight<br>
+                    </h2>
+                    <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="{% static 'app_tour/highlight.png' %}" alt="" data-image-width="256" data-image-height="256">
+                    <p class="u-text u-text-5"> สวนเมอร์ไลออน - ยูนิเวอร์แซล สตูดิโอ -&nbsp;ถนนออร์ชาร์ด -&nbsp;การ์เด้นส์ บาย เดอะ เบย์</p>
+                  </div>
+                </div>
+                <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="{% static 'app_tour/GOSINGAPORE.png' %}" alt="" data-image-width="2245" data-image-height="1587">
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="u-clearfix u-custom-color-7 u-section-2" id="sec-783d">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="custom-expanded u-container-style u-group u-white u-group-1">
+              <div class="u-container-layout u-container-layout-1">
+                <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{% static 'app_tour/description.png' %}" alt="" data-image-width="256" data-image-height="256">
+                <h2 class="u-text u-text-default u-text-1"> รายละเอียดการท่องเที่ยว<br>
+                </h2>
+                <div class="u-custom-color-5 u-preserve-proportions u-shape u-shape-circle u-shape-1"></div>
+                <h2 class="u-text u-text-body-alt-color u-text-2">วันที่ 1</h2>
+                <h2 class="u-text u-text-custom-color-5 u-text-3"> กรุงเทพฯ (สนามบินสุวรรณภูมิ) (SQ705 : 09.40-13.05) - สนามบินชางงี ประเทศสิงคโปร์ – Gardens by the Bay  – ​​สวนเมอร์ไลออน – ถนนช้อปปิ้งออร์ชาร์ด<br>
+                </h2>
+                <p class="u-text u-text-4">พร้อมกันที่ สนามบินสุวรรณภูมิ อาคารผู้โดยสารขาออก เคาน์เตอร์สายการบิน SINGAPORE AIRLINES โดยมีเจ้าหน้าที่ ให้การตอนรับ และ อำนวยความสะดวกในการเช็คอินให้แก่ท่าน<br>
+                </p>
+                <p class="u-text u-text-5"> 06.30 น.<br>
+                </p>
+                <p class="u-text u-text-6">นำท่านเดินทางสู่ สนามบินชางงี ประเทศสิงคโปร์ โดยสายการบิน SINGAPORE AIRLINES เที่ยวบินที่ SQ1 (บริการอาหารและเครื่องดื่มบนเครื่อง)<br>
+                </p>
+                <p class="u-text u-text-7"> 09.40 น.<br>
+                </p>
+                <p class="u-text u-text-8">เดินทางถึง สนามบินชางงี ประเทศสิงคโปร์ (เวลาท้องถิ่นเร็วกว่าประเทศไทย 1 ชั่วโมง) หลังจากนั้นนำผ่านด่านตรวจคนเข้าเมือง รับกระเป๋าสัมภาระ หลังจากนั้นออกเดินทางท่องเที่ยวตามรายการ<br>
+                </p>
+                <p class="u-text u-text-9"> 13.05 น.<br>
+                </p>
+                <p class="u-text u-text-10">เดินทางสู่ การ์เด้นส์ บาย เดอะ เบย์ (Gardens by the Bay  ) สวนสาธารณะขนาดใหญ่ที่ตั้งอยู่บนพื้นที่กว่า 1 ล้านตารางเมตรของอ่าวมารีน่า เบย์ ประเทศสิงคโปร์&nbsp;<br>**ไม่รวมค่าเข้าชม**คลาวด์ฟอเรสต์ (Cloud Forest) ไม่รวมค่าเข้า 20 SGD/ท่าน // ฟลาวเวอร์ โดม (Flower Dome) ไม่รวมค่าเข้า 20 SGD/ท่าน // ฟลอรัล แฟนตาซี (Floral Fantasy) ไม่รวมค่าเข้า 20 SGD/ท่าน<br>
+                </p>
+                <p class="u-text u-text-black u-text-11">นำท่าน ถ่ายรูป​เมอร์ไลออน ​​หนึ่งในสัญลักษณ์ที่มีชื่อเสียงมากที่สุดของสิงคโปร์ก็คือ รูปปั้นที่ตั้งอยู่ที่ Merlion Park (เมอร์ไลออน พาร์ค) โดยตั้งอยู่ใกล้ปากแม่น้ำสิงคโปร์<br>
+                </p>
+                <p class="u-text u-text-black u-text-12">จากนั้นให้ท่านอิสระ ช้อปปิ้งถนนออร์ชาร์ด (Orchard Road) เพลิดเพลินกับการช้อปปิ้งเดินเลือกชมสินค้าทันสมัยที่ถูกใจ พร้อมชมสินค้า อิเล็กทรอนิกส์คอมพิวเตอร์ กล้องถ่ายรูป กล้องวีดีโอและของเล่นเด็ก ณ บริเวณย่านช้อป ปิ้ง ORCHARD ROAD ถนนที่ทุกๆคนที่มาสิงคโปร์ต้องเดินชมและซื้อสินค้า BRAND NAME ยี่ห้อต่างๆถนนออร์ชาร์ดจัดได้ว่าเป็นแหล่งช็อปปิ้งระดับโลก<br>
+                </p>
+                <p class="u-text u-text-black u-text-13">จากนั้นให้ท่านอิสระ ช้อปปิ้งถนนออร์ชาร์ด (Orchard Road) เพลิดเพลินกับการช้อปปิ้งเดินเลือกชมสินค้าทันสมัยที่ถูกใจ พร้อมชมสินค้า อิเล็กทรอนิกส์คอมพิวเตอร์ กล้องถ่ายรูป กล้องวีดีโอและของเล่นเด็ก ณ บริเวณย่านช้อป ปิ้ง ORCHARD ROAD ถนนที่ทุกๆคนที่มาสิงคโปร์ต้องเดินชมและซื้อสินค้า BRAND NAME ยี่ห้อต่างๆถนนออร์ชาร์ดจัดได้ว่าเป็นแหล่งช็อปปิ้งระดับโลก<br>
+                </p>
+                <p class="u-text u-text-black u-text-14">รับประทานอาหารค่ำ ณ ร้านอาหาร ลิ้มลองเมนู บัดกุ้ดเต๋ ร้านดัง Songfa (มื้อที่1)<br>
+                </p>
+                <p class="u-align-center u-text u-text-15">ค่ำ<br>
+                </p>
+                <p class="u-text u-text-black u-text-16"> Hotel Indigo Singapore Katong, an IHG Hotel ระดับ 4 ดาว<br>
+                </p>
+                <p class="u-align-center u-text u-text-17">ที่พัก</p>
+                <div class="u-custom-color-5 u-preserve-proportions u-shape u-shape-circle u-shape-2"></div>
+                <h2 class="u-text u-text-body-alt-color u-text-18">วันที่ 2</h2>
+                <h2 class="u-text u-text-custom-color-5 u-text-19">ยูนิเวอร์แซล สตูดิโอ (UNIVERSAL STUDIO)&nbsp;อิสระอาหารเที่ยงและค่ำเพื่อความสะดวกในการท่องเที่ยว<br>
+                </h2>
+                <p class="u-text u-text-20">รับประทานอาหารเช้า ณ ห้องอาหารของโรงแรม (มื้อที่2)<br>
+                </p>
+                <p class="u-align-center u-text u-text-21">เช้า<br>
+                </p>
+                <p class="u-text u-text-22">หลังจากรับประทานเช้า นำพาท่านไปสวนสนุกยูนิเวอร์แซล สตูดิโอ (UNIVERSAL STUDIO) อิสระอาหารเที่ยงและค่ำเพื่อความสะดวกในการท่องเที่ยว ยูนิเวอร์แซล สตูดิโอ (UNIVERSAL STUDIO) เป็นสวนสนุกระดับโลกที่สร้างขึ้นโดยบริษัทเอ็นบีซียูนิเวอร์แซล และยูนิเวอร์แซลพิกเจอร์ หนึ่งในหกสตูดิโอผู้ผลิตภาพยนตร์รายใหญ่ของประเทศสหรัฐอเมริกา ซึ่งภายในสวนสนุกนั้นได้มีการนำภาพยนตร์ชื่อดังมากมายของสตูดิโอมาดัดแปลงเป็นธีมต่างๆ ตามเนื้อเรื่องเพื่อมอบความสนุกและความบันเทิงให้กับผู้เข้าชม ปัจจุบันสวนสนุกของยูนิเวอร์แซล สตูดิโอ มีทั้งหมด 4 แห่งทั่วโลก คือที่รัฐแคลิฟอร์เนียและรัฐฟลอริด้า ประเทศสหรัฐอเมริกา ที่เมืองโอซาก้า ประเทศญี่ปุ่น และที่ประเทศสิงคโปร์ โดยตั้งอยู่บนเกาะเซนโตซ่า เกาะแห่งความบันเทิงที่มีชื่อเสียงในบริเวณตอนใต้ของประเทศ&nbsp;<br>
+                </p>
+                <p class="u-align-center u-text u-text-23">กลางวัน/ค่ำ</p>
+                <p class="u-text u-text-24">อิสระอาหารกลางวันและเย็นตามอัธยาศัย<br>
+                </p>
+                <p class="u-align-center u-text u-text-25">ที่พัก</p>
+                <p class="u-text u-text-black u-text-26"> Hotel Indigo Singapore Katong, an IHG Hotel ระดับ 4 ดาว<br>
+                </p>
+                <div class="u-custom-color-5 u-preserve-proportions u-shape u-shape-circle u-shape-3"></div>
+                <h2 class="u-text u-text-body-alt-color u-text-27">วันที่ 3</h2>
+                <h2 class="u-text u-text-custom-color-5 u-text-28">China Town –  วัดพระเขี้ยวแก้ว&nbsp;–&nbsp;บูกิสสตรีท – สนามบินชางงี – สนามบินสุวรรณภูมิ (SQ714 : 17.30-19.00)<br>
+                </h2>
+                <p class="u-text u-text-29">รับประทานอาหารเช้า ณ ห้องอาหารของโรงแรม (มื้อที่3)<br>
+                </p>
+                <p class="u-align-center u-text u-text-30">เช้า</p>
+                <p class="u-text u-text-31">หลังอาหารเช้านำท่านไปแวะถ่ายภาพย่าน ไชน่าทาวน์ (China Town) ซึ่งเคยเป็นถิ่นที่อยู่ของชาวจีนที่อพยพมายังสิงคโปร์ ปัจจุบันได้กลายเป็นย่านที่ผสมผสานความเก่าและความใหม่เข้าไว้ด้วยกันได้อย่างมีเสน่ห์ โดยมีทั้งวัดวาอารามที่มีคุณค่าทางประวัติศาสตร์<br>
+                </p>
+                <p class="u-text u-text-32">นำท่านเดินทางไปสู่บูกิสสตรีท(Bugis Street Market) เป็นแหล่งช๊อปปิ้งย่านดังใจกลางเมืองสิงคโปร์ที่มีสินค้า ร้านอาหารมากมายรวมอยู่และให้อิสระอาหารกลางวันตามอัธยาศัย<br>
+                </p>
+                <p class="u-align-center u-text u-text-33"> เที่ยง</p>
+                <p class="u-text u-text-34">นำท่านเดินทางสู่ วัดพระเขี้ยวแก้ว (Buddha Tooth Relic Temple) สร้างขึ้นด้วยงบประมาณ 75 ล้านดอลลาร์สิงคโปร์ หรือประมาณ 1,875 ล้านบาท ใช้รูปแบบสถาปัตยกรรมและการตกแต่งภายในแบบประเทศจีนในสมัยราชวังถัง ผสมผสานกับศิลปะแบบแมนดาลาจากทิเบต และเปิดทำการในปี ค.ศ. 2007 ที่ผ่านมา เป็นวัดชื่อดังในประเทศสิงคโปร์ ซึ่งมีการประดิษฐานพระบรมสารีริกธาตุในส่วนของฟันหรือพระทนต์ของพระพุทธเจ้าเอาไว้ที่ชั้นบนสุดของวัด ได้รับการออกแบบและวางแนวคิดโดยพระอาจารย์ Shi Fa Zhao ที่ดำรงตำแหน่งเจ้าอาวาสของวัด ประกอบกับความช่วยเหลือของที่ปรึกษาทั้งในประเทศและต่างประเทศ จนกลายเป็นวัดสำคัญและสถานที่ท่องเที่ยวที่มีชื่อเสียงในปัจจุบัน ตั้งอยู่ในย่านไชน่าทาวน์ นำท่านชมร้านของ<br>ฝากดิวตี้ฟรี อาทิ น้ำหอม พวงกุญแจ ช็อกโกแลต ของที่ระลึกต่างๆ<br>
+                </p>
+                <p class="u-text u-text-35">หลังจากนั้นนำท่านเดินทางสู่ สนามบินชางงี เพื่อเดินทางกลับประเทศไทย นำท่านสู่ The Jewel Changi ชม น้ำตกจีเวล (The Rain Vortex) เป็นน้ำตกอินดอร์ที่สูงที่สุดในโลก สูงถึง 130 ฟุต ภายในยังสร้างสวนจัดสรรค์ได้อย่างสวยงาม และน้ำตกอินดอร์อย่าง The Rain Vortex  ซึ่งถือเป็นน้ำตกอินดอร์ที่สูงที่สุดในโลกไว้ในสนามบิน โดยใช้น้ำหมุนเวียน 50,000 ลิตร หรือประมาณน้ำในสระว่ายน้ำขนาดมาตรฐานของโอลิมปิก 5 สระ<br>
+                </p>
+                <p class="u-text u-text-36">นำท่านเดินทางสู่ สนามบินสุวรรณภูมิ ประเทศไทย โดยสายการบิน SINGAPORE AIRLINES เที่ยวบินที่ SQ714 (บริการอาหารและเครื่องดื่มบนเครื่อง)<br>
+                </p>
+                <p class="u-align-center u-text u-text-37"> 17.30 น.</p>
+                <p class="u-text u-text-38">เดินทางถึง สนามบินสุวรรณภูมิ ประเทศไทย โดยสวัสดิภาพ<br>
+                </p>
+                <p class="u-align-center u-text u-text-39"> 19.00 น.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="u-clearfix u-custom-color-7 u-section-3" id="sec-2810">
+          <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-container-style u-expanded-width u-group u-white u-group-1">
+              <div class="u-container-layout u-container-layout-1">
+                <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{% static 'app_tour/condition.png' %}" alt="" data-image-width="256" data-image-height="256">
+                <h2 class="u-text u-text-default u-text-1"> รายละเอียดและเงื่อนไข<br>
+                </h2>
+                <p class="u-heading-font u-text u-text-default u-text-2"> เงื่อนไขการให้บริการ<br>► การจองทัวร์และชำระค่าบริการ&nbsp;<br>- กรุณาชำระเงินค่ามำจำทัวร์ 10,000 บาท/ท่าน &nbsp;โดยโอนเข้าบัญชี ที่นั่งจะยืนยันเมื่อได้รับเงินแล้วเท่านั้น<br>- ชำระค่าทัวร์ส่วนที่เหลือ 21 วัน ก่อนการเดินทาง 21 วัน &nbsp;กรณีวันเดินทางน้อยกว่า 21 วัน หรือราคาทัวร์โปรโมชั่น ต้องชำระค่าทัวร์เต็มจำนวนเท่านั้น&nbsp;<br>- กรุณาส่งสำเนาหน้าพาสปอร์ตและเอกสารรับรองการฉีดวัคซีนครบถ้วน Vaccinated Certificate และ International Vaccinated Certificate (จากแอปหมอพร้อม) พร้อมเอกสารชำระมัดจำค่าทัวร์<br>**สำคัญ**สำเนาหน้าพาสปอร์ตผู้เดินทาง (จะต้องมีอายุเหลือมากกว่า 6 เดือนก่อนหมดอายุนับจากวันเดินทางไป-กลับและจำนวนหน้หนังสือเดินทางต้องเหลือว่างสำหรับติดวีซ่าไม่ต่ำกว่า 3หน้า) **กรุณาตรวจสอบก่อนส่งให้บริษัทมิฉะนั้นทางบริษัทจะไม่รับผิดชอบกรณีพาสปอร์ตหมดอายุ ** กรุณาส่งพร้อมพร้อมหลักฐานการโอนเงินมัดจำการยกเลิกการเดินทาง<br>***เงื่อนไขการยกเลิกทัวร์เป็นไปตามพระราชบัญญัติธุรกิจนำเที่ยวและมัคคุเทศก์***<br>1. แจ้งยกเลิกการเดินทางล่วงหน้า ไม่น้อยกว่า 30 วัน คืนเงินค่าทัวร์โดยหักค่าใช้จ่ายที่เกิดขึ้นจริง<br>2. แจ้งยกเลิกก่อนการเดินทาง 15-29 วัน ยึดเงิน 50% จากยอดที่ลูกค้าชำระมา ส่วนที่เหลือ 50% หัก ค่าใช้จ่ายที่เกิดขึ้นจริง (ถ้ามี)<br>3. แจ้งยกเลิกการเดินทางน้อยกว่า 15 วันของการเดินทาง ขอสงวนสิทธิ์ไม่คืนเงินทั้งหมด<br>** กรณีมีเหตุให้ยกเลิกทัวร์ โดยไม่ใช่ความผิดของบริษัททัวร์ ทางบริษัทคืนเงินค่าทัวร์โดยหักค่าใช้จ่ายที่เกิดขึ้นจริง(ถ้ามี)&nbsp;<br>*ค่าใช้จ่ายที่เกิดขึ้นจริง เช่น ค่ามัดจำตั๋วเครื่องบิน โรงแรม ค่าวีซ่า และค่าใช้จ่ายจำเป็นอื่นๆ<br>
+                  <br>หมายเหตุ : กรุณาอ่านศึกษารายละเอียดทั้งหมดก่อนทำการจอง เพื่อความถูกต้องและความเข้าใจตรงกันระหว่างท่านลูกค้าและบริษัท ฯ และเมื่อท่านตกลงชำระเงินมัดจาหรือค่าทัวร์ทั้งหมดกับทางบริษัทฯ แล้ว ทางบริษัทฯ จะถือว่าท่านได้ยอมรับเงื่อนไขข้อตกลงต่างๆ ทั้งหมด&nbsp;<br>- การเดินทางในแต่ละครั้งจะต้องมีผู้โดยสารขั้นต่ำ 20 ท่าน<br>- ขอสงวนสิทธิ์การเก็บค่าน้ำมันและภาษีสนามบินทุกแห่งเพิ่ม หากสายการบินมีการปรับขึ้นก่อนวันเดินทาง&nbsp;<br>- บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนเที่ยวบิน โดยมิต้องแจ้งให้ทราบล่วงหน้าอันเนื่องจากสาเหตุต่างๆ<br>- บริษัทฯ มีสิทธิ์ที่จะเปลี่ยนแปลงรายละเอียดบางประการในทัวร์นี้ เมื่อเกิดเหตุสุดวิสัยไม่อาจแก้ไขได้<br>- บริษัทฯ ไม่รับผิดชอบค่าเสียหายในเหตุการณ์ที่เกิดจากยานพาหนะ การยกเลิกเที่ยวบิน การล่าช้าของสายการบิน ภัยธรรมชาติ การเมือง จลาจล ประท้วง คำสั่งของเจ้าหน้าที่รัฐ และอื่นๆ ที่อยู่นอกเหนือการควบคุมของทางบริษัท หรือค่าใช่จ่ายเพิ่มเติมที่เกิดขึ้นทางตรง หรือทางอ้อม เช่น การเจ็บป่วย การถูกทำร้าย การสูญหาย ความล่าช้า หรือจากอุบัติเหตุต่างๆ<br>- มัคคุเทศก์ พนักงาน และตัวแทนบริษัทฯ ไม่มีสิทธิ์ในการให้คำสัญญาใดๆ ทั้งสิ้นแทน บริษัทฯนอกจากมีเอกสารลงนามโดยผู้มีอำนาจของบริษัทฯกำกับเท่านั้น<br>- ราคาดังกล่าวข้างต้นสามารถเปลี่ยนแปลงได้ตามความเหมาะสม ทั้งนี้ขึ้นอยู่ตามสภาวะค่าเงินบาทและค่าน้ำมันที่ไม่คงที่ การปรับราคาค่าโดยสารของสายการบิน เพิ่มเติมจากราคาที่กำหนดไว้<br>- เมื่อท่านออกเดินทางไปกับคณะแล้ว ท่านงดใช้บริการใดบริการหนึ่ง หรือไม่เดินทางพร้อมคณะ ถือว่าท่านสละสิทธิ์ ไม่สามารถเรียกร้องค่าบริการคืนได้ ไม่ว่ากรณีใดๆ ทั้งสิ้น
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+    </body>
+    {% endblock content%}
+  </html>

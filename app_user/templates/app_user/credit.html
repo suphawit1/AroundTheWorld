@@ -1,7 +1,10 @@
 {% extends 'app_general/components/base.html'%}
 
 {% block site_title %} Register - {% endblock %}
-
+{% load static %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'app_general/main.css' %}">
+{% endblock %}
 {% block content %}
 <div class="skyBG">
     <div class="mainpage">
