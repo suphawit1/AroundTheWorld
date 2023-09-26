@@ -31,7 +31,7 @@
                     </h3>
                     <h4 class="u-align-center u-text u-text-3">ราคาเริ่มต้น (บาท)&nbsp;<br>
                     </h4>
-                    <h3 class="u-align-center u-text u-text-default u-text-4">{{tour.price}}<br>
+                    <h3 class="u-align-center u-text u-text-default u-text-4">{{tour.price|floatformat:'g'}}<br>
                     </h3>
                     <h4 class="u-align-center u-text u-text-5">
                         {% for i in tour.ListLoID.all %}
