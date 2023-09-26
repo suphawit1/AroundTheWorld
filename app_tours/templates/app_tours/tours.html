@@ -21,7 +21,7 @@
         <div class="u-clearfix u-sheet u-sheet-2">
             <h2 class="u-text u-text-default u-text-1">{{region}}</h2>
         </div>
-        <div class="u-clearfix u-sheet u-sheet-1" style="display: flex;">
+        <div class="u-clearfix u-sheet u-sheet-1" style="display: flex; overflow: auto;">
             {% for tour in tours %}
             {% if tour.CountryName.Region == region %}
             <div style="cursor: pointer;" onclick="location.href='{% url 'tour' tour.TourName %}'" class="u-border-1 u-border-grey-30 u-container-style u-group u-hover-feature u-radius-15 u-shape-round u-white u-group-1">
