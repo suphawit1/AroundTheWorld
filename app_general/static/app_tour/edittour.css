@@ -1,3 +1,6 @@
+.Headerdate{
+  margin-left: 38px;
+ }
  .u-section-1 {
   background-image: none;
 }
@@ -39,7 +42,7 @@
 .u-section-1 .u-text-2 {
   font-weight: 700;
   font-size: 1rem;
-  margin: -77px auto 0 0;
+  margin: -125px auto 0 0;
 }
 
 .u-section-1 .u-text-3 {
@@ -181,9 +184,12 @@
 .u-section-2 .u-sheet-1 {
   min-height: 2220px;
 }
+.u-section-2 .u-sheet-1 {
+  min-height: 0px;
+}
 
 .u-section-2 .u-group-1 {
-  min-height: 2220px;
+  min-height: 0px;
   margin-top: 0;
   margin-bottom: 0;
   height: auto;
@@ -235,16 +241,12 @@
 
 .u-section-2 .u-text-6 {
   font-size: 1.25rem;
-  margin: 40px 18px 0 150px;
-}
-
-.u-text-7{
-  text-align: center;
+  margin: 40px 18px 0 134px;
 }
 
 .u-section-2 .u-text-7 {
   font-size: 1.25rem;
-  margin: -64px 1000px 0 32px;
+  margin: -64px 1027px 0 32px;
 }
 
 .u-section-2 .u-text-8 {
@@ -459,9 +461,7 @@
     margin-right: 0;
     margin-left: 0;
   }
-  .u-text-7{
-    text-align: center;
-  }
+
   .u-section-2 .u-text-7 {
     margin-top: 20px;
     margin-right: 859px;

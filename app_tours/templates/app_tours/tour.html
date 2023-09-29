@@ -1,25 +1,146 @@
 {% extends 'app_general/components/base.html'%}
 {% block site_title%}tour |{% endblock site_title%}
+{% load static %}
+{% block link %}
+    <link rel="stylesheet" href="{% static 'app_tour/nicepage.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'app_tour/singaporetour.css' %}" media="screen">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
+{% endblock %}
 {% block content%}
-{% if tour is not None %}
-    <h3>{{tour.TourName}}</h3>
-    <p>ประเทศ:{{tour.CountryName}}</p>
-    <p>สถานะ:{{tour.Status}}</p>
-    <p>ระยะเวลาการเดินทาง:{{tour.TripDuration}}</p>
-    <p>สถานที่ท่องเที่ยว</p>
-    {% for i in tour.ListLoID.all %}
-        <p style="margin-left: 20px;">->{{i}}</p>
+<body data-path-to-root="./" class="u-body u-xl-mode" data-lang="en">
+  <section class="u-clearfix u-custom-color-7 u-section-1" id="sec-a06d">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="custom-expanded u-container-style u-group u-white u-group-1"style="overflow: hidden;">
+          <div class="u-container-layout u-container-layout-1">
+            <div class="u-border-2 u-border-grey-75 u-container-style u-group u-radius-15 u-shape-round u-white u-group-2">
+              <div class="u-container-layout u-container-layout-2">
+                {% if Head.tourNameWeb != "" %}
+                  <p class="u-text u-text-default u-text-1">ชื่อทัวร์ :&nbsp;<span style="font-weight: 400;"> {{Head.tourNameWeb}}</span>
+                {% else %}
+                  <p class="u-text u-text-default u-text-1">ชื่อทัวร์ :&nbsp;<span style="font-weight: 400;"> {{tour.TourName}}</span>
+                {% endif %}
+                {% if Head.tourTypeWeb != "" %}
+                  <br>ประเภททัวร์ : <span style="font-weight: 400;">{{Head.tourTypeWeb}}</span><br>
+                {% else %}
+                  <br>ประเภททัวร์ : <span style="font-weight: 400;">{{tour.CountryName.Region}}</span><br>
+                {% endif %}
+                {% if Head.tourDurationsWeb != "" %}
+                  <span style="font-weight: 400;">
+                    <span style="font-weight: 700;">ระยะเวลา :</span> {{Head.tourDurationsWeb}}
+                  </span>
+                {% else %}
+                  <span style="font-weight: 400;">
+                    <span style="font-weight: 700;">ระยะเวลา :</span> {{tour.TripDuration}}
+                  </span>
+                {% endif %}
+                </p>
+                {% if Head.tourWeb != "" %}
+                  <p class="u-text u-text-default u-text-2">ทัวร์ :&nbsp;<span style="font-weight: 400;"> {{Head.tourWeb}}</span>
+                {% else %}
+                  <p class="u-text u-text-default u-text-2">ทัวร์ :&nbsp;<span style="font-weight: 400;"> {{tour.TourName}}</span>
+                {% endif %}
+                {% if Head.tourTravelWeb != "" %}
+                  <br>เที่ยวเมือง :&nbsp;<span style="font-weight: 400;">{{Head.tourTravelWeb}}</span><br>
+                {% else %}
+                  <br>เที่ยวเมือง :&nbsp;<span style="font-weight: 400;">{{tour.CountryName}}</span><br>
+                {% endif %}
+                {% if Head.tourAirlineWeb != "" %}
+                  <span style="font-weight: 400;">
+                    <span style="font-weight: 700;">สายการบิน :</span> {{Head.tourAirlineWeb}}</span>
+                {% else %}
+                  <span style="font-weight: 400;">
+                    <span style="font-weight: 700;">สายการบิน :</span> ไม่พบข้อมูล </span>
+                {% endif %}
+                </p>
+                <h2 class="u-text u-text-custom-color-5 u-text-default u-text-3">ราคาเริ่มต้น (บาท)<br>
+                  {% if Head.tourPriceWeb != "" %}
+                    <span style="font-size: 3rem;">฿{{Head.tourPriceWeb}}</span><br>
+                  {% else %}
+                    <span style="font-size: 3rem;">฿{{tour.price|floatformat:'g'}}</span><br>
+                  {% endif %}
+                </h2>
+                <button class="u-border-none u-btn u-btn-round u-button-style u-custom-color-5 u-radius-30 u-btn-1" rel="nofollow">จองทัวร์</button>
+              </div>
+            </div>
+            <div class="u-border-2 u-border-grey-75 u-container-style u-group u-radius-15 u-shape-round u-white u-group-3">
+              <div class="u-container-layout u-container-layout-3">
+                <h2 class="u-text u-text-default u-text-4"> ไฮไลท์ทัวร์&nbsp;Highlight<br>
+                </h2>
+                <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-1" src="{% static 'app_tour/highlight.png' %}" alt="" data-image-width="256" data-image-height="256">
+                {% if Head.tourHighlightWeb != "" %}
+                  <p class="u-text u-text-5"> {{Head.tourHighlightWeb}}</p>
+                {% else %}
+                <p class="u-text u-text-5"> ไม่พบข้อมูล</p>
+                {% endif %}
+              </div>
+            </div>
+            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="{% static tour.immage%}" alt="" data-image-width="2245" data-image-height="1587">
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="u-clearfix u-custom-color-7 u-section-2" id="sec-783d" style="z-index: 1000;">
+      <div class="u-clearfix u-sheet u-sheet-1" style="min-height: 0px;">
+        <div class="custom-expanded u-container-style u-group u-white u-group-1" style="min-height: 0px;">
+          <div class="u-container-layout u-container-layout-1">
+            <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{% static 'app_tour/description.png' %}" alt="" data-image-width="256" data-image-height="256">
+            <h2 class="u-text u-text-default u-text-1"> รายละเอียดการท่องเที่ยว<br>
+            </h2>
+            <button onclick="location.href='{% url 'touredit' tour.TourName %}'" style="margin-left: 570px; top: -35px; cursor: pointer;">แก้ไข/เพิ่มข้อมูล</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% if Day == "" %}
+    <section class="u-clearfix u-custom-color-7 u-section-2" id="sec-783d">
+      <div class="u-clearfix u-sheet u-sheet-1" style="min-height: 0px;">
+        <div class="custom-expanded u-container-style u-group u-white u-group-1" style="min-height: 0px;">
+          <div class="u-container-layout u-container-layout-1" >
+            <h4 style="margin-left: 160px;">ยังไม่มีรายละเอียด</h4>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% else %}
+    {%for day in Day %}
+    <section class="u-clearfix u-custom-color-7 u-section-2" id="sec-783d">
+      <div class="u-clearfix u-sheet u-sheet-1" style="min-height: 0px;">
+        <div class="custom-expanded u-container-style u-group u-white u-group-1" style="min-height: 0px;">
+          <div class="u-container-layout u-container-layout-1" >
+            <div class="u-custom-color-5 u-preserve-proportions u-shape u-shape-circle u-shape-1" style="top:-10px;"></div>
+            <h2 class="u-text u-text-body-alt-color u-text-2" style="top:-10px">{{day.0}}</h2>
+            <h2 class="u-text u-text-custom-color-5 u-text-3"> {{day.1}}<br><br>
+            </h2>
+            {% with counter=forloop.counter %}
+              {% for ti in time|lookup:counter %}
+                {% with ti|concatenate:"||"|concatenate:counter as concatenated %}
+                <p class="u-text u-text-7" style="top:75px;">{{ti}}<br></p>
+                  {% for de in detail|lookup:concatenated%}
+                    <p class="u-text u-text-6" >{{de}}<br></p>
+                  {% endfor %}
+                {% endwith %}
+              {% endfor %}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+    </section>
     {% endfor %}
-    <button type="button" onclick="goToBookingPage()">จอง</button>
-
-        <script>
-        function goToBookingPage() {
-            var bookingUrl = "{% url 'booking' tour.TourName %}";
-            window.location.href = bookingUrl;
-        }
-        </script>
-
-{% else %}
-    <p>ไม่พบข้อมูลทัวร์นี้</p>
-{% endif %}
+    {% endif %}
+    <section class="u-clearfix u-custom-color-7 u-section-3" id="sec-2810">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-container-style u-expanded-width u-group u-white u-group-1">
+          <div class="u-container-layout u-container-layout-1">
+            <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{% static 'app_tour/condition.png' %}" alt="" data-image-width="256" data-image-height="256">
+            <h2 class="u-text u-text-default u-text-1"> รายละเอียดและเงื่อนไข<br>
+            </h2>
+            <p class="u-heading-font u-text u-text-default u-text-2"> เงื่อนไขการให้บริการ<br>► การจองทัวร์และชำระค่าบริการ&nbsp;<br>- กรุณาชำระเงินค่ามำจำทัวร์ 10,000 บาท/ท่าน &nbsp;โดยโอนเข้าบัญชี ที่นั่งจะยืนยันเมื่อได้รับเงินแล้วเท่านั้น<br>- ชำระค่าทัวร์ส่วนที่เหลือ 21 วัน ก่อนการเดินทาง 21 วัน &nbsp;กรณีวันเดินทางน้อยกว่า 21 วัน หรือราคาทัวร์โปรโมชั่น ต้องชำระค่าทัวร์เต็มจำนวนเท่านั้น&nbsp;<br>- กรุณาส่งสำเนาหน้าพาสปอร์ตและเอกสารรับรองการฉีดวัคซีนครบถ้วน Vaccinated Certificate และ International Vaccinated Certificate (จากแอปหมอพร้อม) พร้อมเอกสารชำระมัดจำค่าทัวร์<br>**สำคัญ**สำเนาหน้าพาสปอร์ตผู้เดินทาง (จะต้องมีอายุเหลือมากกว่า 6 เดือนก่อนหมดอายุนับจากวันเดินทางไป-กลับและจำนวนหน้หนังสือเดินทางต้องเหลือว่างสำหรับติดวีซ่าไม่ต่ำกว่า 3หน้า) **กรุณาตรวจสอบก่อนส่งให้บริษัทมิฉะนั้นทางบริษัทจะไม่รับผิดชอบกรณีพาสปอร์ตหมดอายุ ** กรุณาส่งพร้อมพร้อมหลักฐานการโอนเงินมัดจำการยกเลิกการเดินทาง<br>***เงื่อนไขการยกเลิกทัวร์เป็นไปตามพระราชบัญญัติธุรกิจนำเที่ยวและมัคคุเทศก์***<br>1. แจ้งยกเลิกการเดินทางล่วงหน้า ไม่น้อยกว่า 30 วัน คืนเงินค่าทัวร์โดยหักค่าใช้จ่ายที่เกิดขึ้นจริง<br>2. แจ้งยกเลิกก่อนการเดินทาง 15-29 วัน ยึดเงิน 50% จากยอดที่ลูกค้าชำระมา ส่วนที่เหลือ 50% หัก ค่าใช้จ่ายที่เกิดขึ้นจริง (ถ้ามี)<br>3. แจ้งยกเลิกการเดินทางน้อยกว่า 15 วันของการเดินทาง ขอสงวนสิทธิ์ไม่คืนเงินทั้งหมด<br>** กรณีมีเหตุให้ยกเลิกทัวร์ โดยไม่ใช่ความผิดของบริษัททัวร์ ทางบริษัทคืนเงินค่าทัวร์โดยหักค่าใช้จ่ายที่เกิดขึ้นจริง(ถ้ามี)&nbsp;<br>*ค่าใช้จ่ายที่เกิดขึ้นจริง เช่น ค่ามัดจำตั๋วเครื่องบิน โรงแรม ค่าวีซ่า และค่าใช้จ่ายจำเป็นอื่นๆ<br>
+              <br>หมายเหตุ : กรุณาอ่านศึกษารายละเอียดทั้งหมดก่อนทำการจอง เพื่อความถูกต้องและความเข้าใจตรงกันระหว่างท่านลูกค้าและบริษัท ฯ และเมื่อท่านตกลงชำระเงินมัดจาหรือค่าทัวร์ทั้งหมดกับทางบริษัทฯ แล้ว ทางบริษัทฯ จะถือว่าท่านได้ยอมรับเงื่อนไขข้อตกลงต่างๆ ทั้งหมด&nbsp;<br>- การเดินทางในแต่ละครั้งจะต้องมีผู้โดยสารขั้นต่ำ 20 ท่าน<br>- ขอสงวนสิทธิ์การเก็บค่าน้ำมันและภาษีสนามบินทุกแห่งเพิ่ม หากสายการบินมีการปรับขึ้นก่อนวันเดินทาง&nbsp;<br>- บริษัทฯ ขอสงวนสิทธิ์ในการเปลี่ยนเที่ยวบิน โดยมิต้องแจ้งให้ทราบล่วงหน้าอันเนื่องจากสาเหตุต่างๆ<br>- บริษัทฯ มีสิทธิ์ที่จะเปลี่ยนแปลงรายละเอียดบางประการในทัวร์นี้ เมื่อเกิดเหตุสุดวิสัยไม่อาจแก้ไขได้<br>- บริษัทฯ ไม่รับผิดชอบค่าเสียหายในเหตุการณ์ที่เกิดจากยานพาหนะ การยกเลิกเที่ยวบิน การล่าช้าของสายการบิน ภัยธรรมชาติ การเมือง จลาจล ประท้วง คำสั่งของเจ้าหน้าที่รัฐ และอื่นๆ ที่อยู่นอกเหนือการควบคุมของทางบริษัท หรือค่าใช่จ่ายเพิ่มเติมที่เกิดขึ้นทางตรง หรือทางอ้อม เช่น การเจ็บป่วย การถูกทำร้าย การสูญหาย ความล่าช้า หรือจากอุบัติเหตุต่างๆ<br>- มัคคุเทศก์ พนักงาน และตัวแทนบริษัทฯ ไม่มีสิทธิ์ในการให้คำสัญญาใดๆ ทั้งสิ้นแทน บริษัทฯนอกจากมีเอกสารลงนามโดยผู้มีอำนาจของบริษัทฯกำกับเท่านั้น<br>- ราคาดังกล่าวข้างต้นสามารถเปลี่ยนแปลงได้ตามความเหมาะสม ทั้งนี้ขึ้นอยู่ตามสภาวะค่าเงินบาทและค่าน้ำมันที่ไม่คงที่ การปรับราคาค่าโดยสารของสายการบิน เพิ่มเติมจากราคาที่กำหนดไว้<br>- เมื่อท่านออกเดินทางไปกับคณะแล้ว ท่านงดใช้บริการใดบริการหนึ่ง หรือไม่เดินทางพร้อมคณะ ถือว่าท่านสละสิทธิ์ ไม่สามารถเรียกร้องค่าบริการคืนได้ ไม่ว่ากรณีใดๆ ทั้งสิ้น
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 {% endblock content%}
