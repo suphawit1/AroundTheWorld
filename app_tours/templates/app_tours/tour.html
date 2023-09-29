@@ -60,7 +60,7 @@
                     <span style="font-size: 3rem;">฿{{tour.price|floatformat:'g'}}</span><br>
                   {% endif %}
                 </h2>
-                <button class="u-border-none u-btn u-btn-round u-button-style u-custom-color-5 u-radius-30 u-btn-1" rel="nofollow">จองทัวร์</button>
+                <button class="u-border-none u-btn u-btn-round u-button-style u-custom-color-5 u-radius-30 u-btn-1" rel="nofollow" onclick="goToBookingPage()">จองทัวร์</button>
               </div>
             </div>
             <div class="u-border-2 u-border-grey-75 u-container-style u-group u-radius-15 u-shape-round u-white u-group-3">
@@ -143,4 +143,11 @@
       </div>
     </section>
   </body>
+
+  <script>
+    function goToBookingPage() {
+        var bookingUrl = "{% url 'booking' tour.TourName %}";
+        window.location.href = bookingUrl;
+    }
+    </script>
 {% endblock content%}
