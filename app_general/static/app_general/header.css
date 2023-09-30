@@ -1,0 +1,121 @@
+/* header.css */
+* {
+    margin-top: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    margin-top: 70px;
+}
+
+.container {
+    width: 100%;
+    height: 90px;
+    background-color: white;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    position: fixed;
+    top: 0;
+}
+
+ul:not(.u-unstyled) {
+    font-size: 1.125rem;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo img {
+    width: 90px;
+    cursor: pointer;
+}
+
+.brand-name {
+    font-size: 24px;
+    margin-left: 20px;
+    display: inline-block;
+}
+
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    padding-left: 20px;
+}
+
+.nav-links ul li {
+    margin-right: 20px;
+}
+
+.nav-links ul li:last-child {
+    margin-right: 0;
+}
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-right: 20px;
+}
+
+.user-name {
+    font-size: 24px;
+}
+
+.user-credit {
+    font-size: 20px;
+}
+
+.profile-picture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+.nav-links ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px; /* ขนาดของตัวหนังสือเมนู */
+}
+
+.user-actions .login-button,
+.user-actions .register-button {
+    background-color: transparent; /* สีพื้นหลังของปุ่มเป็นโปร่ง */
+    color: black; /* สีข้อความบนปุ่ม */
+    padding: 5px 15px; /* ขนาดของปุ่ม */
+    border: 2px solid black; /* เส้นขอบ 2px สีดำ */
+    border-radius: 15px; /* มีขอบมนรัศมี 15px */
+    cursor: pointer; /* เปลี่ยนรูปลูกศรเมื่อนำเมาส์ไปชี้ที่ปุ่ม */
+    font-size: 20px; /* ขนาดของตัวหนังสือบนปุ่ม */
+    margin-left: 20px; /* ระยะห่างซ้ายของปุ่ม */
+    transition: background-color 0.3s, color 0.3s; /* เพิ่มอนิเมชันสำหรับ hover */
+}
+
+.user-actions .login-button:hover,
+.user-actions .register-button:hover {
+    background-color: #001eff; /* สีพื้นหลังของปุ่มเมื่อ hover */
+    color: white; /* สีข้อความบนปุ่มเมื่อ hover */
+}
+

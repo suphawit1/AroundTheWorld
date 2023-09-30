@@ -1,12 +1,55 @@
-<header style=" background-color: rgb(63, 245, 139);">
-    <a href="{% url 'home'%}" style="margin-right: 50px;">AroundTheWorld</a>
-    <a href="{% url 'tours'%}" style="margin-right: 150px;">Tours</a>
-    {% if user.is_authenticated %}
-    <a href="{% url 'dashboard_user'%}" style="margin-right: 150px;">{{ user.username }}</a>
-    <a href="{% url 'dashboard_credit' %}" style="margin-right: 150px;">Credit : {{user_credit}} บาท</a>
-    <a href="{% url 'logout' %}" style="margin-right: 150px;">ออกจากระบบ</a>
-    {% else %}
-    <a href="{% url 'login' %}" style="margin-right: 150px;">เข้าสู่ระบบ</a>
-    <a href="{% url 'register' %}" style="margin-right: 150px;">สมัครสมาชิก</a>
-    {% endif %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'app_general/header.css' %}" media="screen">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+<header class="header" style="z-index: 10000;">
+    <div class="container" style="z-index: 10000;">
+        <div class="header-left">
+            <div class="logo" onclick="goToHomePage()">
+                <img class = "headertour" src="{% static 'app_general/logo.png' %}" alt="Logo">
+            </div>
+            <div class="brand" onclick="goToHomePage()" style="cursor: pointer;">
+                <span class="brand-name">Around The World</span>
+            </div>
+            <div class="nav-links">
+                <ul class = "tourhead">
+                    <li class = "tourhead"><a href="{% url 'home'%}">หน้าหลัก</a></li>
+                    <li class = "tourhead"><a href="{% url 'tours'%}">ทัวร์การท่องเที่ยว</a></li>
+                </ul>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="header-right">
+            <div class="user-info" style="cursor: pointer;" onclick="goToProfilePage()">
+                <span class="user-name">{{ user.username }}</span>
+                <span class="user-credit">เครดิต {{user_credit}} บาท</span>
+            </div>
+            <img style="cursor: pointer;" onclick="goToProfilePage()" src="{% static 'app_general/iconprofile.png' %}" class="profile-picture"></img>
+        </div>
+        {% else %}
+        <div class="header-right">
+            <div class="user-actions">
+                <button class="login-button" onclick="goToLoginPage()">ลงชื่อเข้าใช้</button>
+                <button class="register-button" onclick="goToRegisterPage()">ลงทะเบียน</button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
 </header>
+<script>
+    function goToLoginPage() {
+        var LoginUrl = "{% url 'login' %}";
+        window.location.href = LoginUrl;
+    }
+    function goToRegisterPage() {
+        var RegisterUrl = "{% url 'register' %}";
+        window.location.href = RegisterUrl;
+    }
+    function goToHomePage() {
+        var HomeUrl = "{% url 'home'%}";
+        window.location.href = HomeUrl;
+    }
+    function goToProfilePage() {
+        var ProfileUrl = "{% url 'profile' %}";
+        window.location.href = ProfileUrl;
+    }
+</script>

@@ -41,12 +41,12 @@ class Fakecardform(forms.Form):
         message='Only alphabetic characters are allowed.',
     )
 
-    Name = forms.CharField(max_length=50, validators=[alpha_validator], widget=forms.TextInput(attrs={'id': 'name'}),
-        label='ชื่อเจ้าของบัตร(ภาษาอังกฤษ)'
+    Name = forms.CharField(max_length=50, validators=[alpha_validator], widget=forms.TextInput(attrs={'id': 'name','style': 'width: 370px;'}),
+        label='ชื่อเจ้าของบัตร'
         )
-    CreditCard = forms.CharField(max_length=16, validators=[numeric_validator], widget=forms.TextInput(attrs={'id': 'card'}),
+    CreditCard = forms.CharField(max_length=16, validators=[numeric_validator], widget=forms.TextInput(attrs={'id': 'card','style': 'width: 370px;'}),
         label='เลขบัตรเครดิต')
-    CVV = forms.CharField(max_length=3, validators=[numeric_validator] , widget=forms.TextInput(attrs={'id': 'CVV'}),
+    CVV = forms.CharField(max_length=3, validators=[numeric_validator] , widget=forms.TextInput(attrs={'id': 'CVV','style': 'width: 45px;'}),
         label='เลข CVV')
     exmonth = forms.ChoiceField(choices=exmonthchoice,widget=forms.Select(attrs={'id': 'exmonth'}))
     exyear = forms.ChoiceField(choices=exyearchoice,widget=forms.Select(attrs={'id': 'exyear'}))

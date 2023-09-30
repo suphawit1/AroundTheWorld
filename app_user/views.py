@@ -81,32 +81,15 @@ def logoutview(request):
     return HttpResponseRedirect(reverse('home'))
 
 @login_required
-def dashboard_user(request):
+def profile(request):
     logged_in_user = request.user
     Cus = Customer.objects.get(user=logged_in_user)
-    obj = Customer.objects.get(pk=Cus.CusID)
-    checkedit = 0
-    if request.method == "POST":
-        form = UserEditForm(request.POST,instance=obj)
-        print(form.errors)
-        if form.is_valid():
-            checkedit = 1
-            form.save()
-    else:
-        initial_values = {
+    initial_values = {
             'FirstName': Cus.CusFirstName,
             'LastName': Cus.CusLastName,
             'Contract': Cus.CusContract,
             'Email': Cus.CusEmail
         }
-        form = UserEditForm(initial=initial_values,instance=obj)
-    context = {"form":form,"check":checkedit}
-    return render(request, "app_user/dashboard.html", context)
-
-@login_required
-def dashboard_book(request):
-    logged_in_user = request.user
-    Cus = Customer.objects.get(user=logged_in_user)
     
     bookedobj = Booking.objects.filter(cusID=Cus)
     
@@ -120,29 +103,30 @@ def dashboard_book(request):
             i.PayNumber.save()
             i.delete()
             continue
-    logged_in_user = request.user
-    Cus = Customer.objects.get(user=logged_in_user)
-    
     try:
         booklist = Booking.objects.filter(cusID=Cus)
     except:
         booklist = None
 
-    context = {"booklist":booklist}
-    return render(request, "app_user/bookinglist.html", context)
+    print(booklist)
 
-@login_required
-def dashboard_credit(request):
-    check_credit = 0
-    logged_in_user = request.user
-    Cus = Customer.objects.get(user=logged_in_user)
-
+    obj = Customer.objects.get(pk=Cus.CusID)
+    checkedit = 0
     if request.method == "POST":
-        add_Credit = request.POST.get('addCredit')
-        Cus.Credits += int(add_Credit)
-        check_credit = 1
-        Cus.save()
+        form = UserEditForm(initial=initial_values,instance=obj)
+        if 'CusFirstName' in request.POST:
+            form = UserEditForm(request.POST,instance=obj)
+            if form.is_valid():
+                checkedit = 1
+                form.save()
+        else:
+            add_Credit = request.POST.get('addCredit')
+            Cus.Credits += int(add_Credit)
+            checkedit = 2
+            Cus.save()
 
-    context = {'check':check_credit}
+    else:
+        form = UserEditForm(initial=initial_values,instance=obj)
+    context = {"form":form,"check":checkedit,"booklist":booklist}
 
-    return render(request, "app_user/credit.html", context)
+    return render(request, "app_user/profile.html",context)

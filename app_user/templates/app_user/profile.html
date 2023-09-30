@@ -1,0 +1,143 @@
+{% extends 'app_general/components/base.html'%}
+{% load static %}
+
+{% block site_title %} Register - {% endblock %}
+{% load static %}
+{% block link %}
+  <link rel="stylesheet" href="{% static 'app_user/nicepageprofile.css' %}" media="screen">
+  <link rel="stylesheet" href="{% static 'app_user/profile.css' %}" media="screen"><link rel="stylesheet" href="{% static 'app_general/main.css' %}">
+  <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+  <link rel="canonical" href="/">
+{% endblock %}
+{% block content %}
+  <body data-path-to-root="./" class="u-body u-xl-mode" data-lang="en">
+    <section class="u-clearfix u-image u-section-1" id="sec-cb8f" data-image-width="1280" data-image-height="852">
+      {% if check != 0 %}
+            <div id="myModal" class="modal">
+            <div class="modal-content">
+                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                width="215.434px" height="215.434px" viewBox="0 0 215.434 215.434" enable-background="new 0 0 215.434 215.434"
+                xml:space="preserve">
+            <g>
+                <circle fill="#54C147" cx="107.717" cy="107.717" r="106.299"/>
+                <polygon fill="#FFFFFF" points="96.977,121.718 145.084,50.79 168.752,69.02 103.583,164.647 46.678,120.299 63.562,96.402 	"/>
+            </g>
+            </svg>
+                {% if check == 1%}
+                  <p>แก้ไขข้อมูลสำเร็จ</p>
+                {% else %}
+                <p>เติมเครดิตสำเร็จ</p>
+                {% endif %}
+                <button onclick="closeModal()">Ok</button>
+            </div>
+            </div>
+                <script>
+                var modal = document.getElementById("myModal");
+                function showAlert() {
+                    modal.style.display = "block";
+                }
+                function closeModal() {
+                    modal.style.display = "none";
+                }
+                showAlert()
+                </script>
+            {% endif %}
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="custom-expanded u-border-2 u-border-grey-75 u-container-style u-group u-radius-15 u-shape-round u-white u-group-1">
+          <div class="u-container-layout u-valign-bottom u-container-layout-1">
+            <form action="{% url 'profile' %}" method="post" id = "editform">
+              {% csrf_token %}
+              <h1 class="u-text u-text-default u-text-1">ข้อมูลผู้ใช้</h1><span class="u-file-icon u-icon u-icon-1"><img src="{% static 'app_user/iconprofile.png' %}" alt=""></span>
+              <h2 class="u-text u-text-default u-text-2">ชื่อจริง: {{form.CusFirstName}} </h2>
+              <h2 class="u-text u-text-default u-text-3">นามสกุล: {{form.CusLastName}}</h2>
+              <h2 class="u-text u-text-default" style="margin-left: 80px; margin-top: 0px; margin-bottom: -30px; color: red;" >{{form.CusFirstName.errors}} {{form.CusLastName.errors}}</h2>
+              <h2 class="u-text u-text-default u-text-4">เบอร์โทรศัพท์: {{form.CusContract}}</h2>
+              <h2 class="u-text u-text-default" style="margin-left: 80px; margin-top: 0px; margin-bottom: -30px; color: red;" >{{form.CusContract.errors}}</h2>
+              <h2 class="u-text u-text-default u-text-5">อีเมล: {{form.CusEmail}}</h2>
+              <h2 class="u-text u-text-default" style="margin-left: 80px; margin-top: 0px; margin-bottom: -30px; color: red;" >{{form.CusEmail.errors}}</h2>
+              <h2 class="u-text u-text-default u-text-6">จำนวนเครดิต: {{user_credit}} บาท</h2>
+              <a class="u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-radius-30 u-btn-1" id = "FormEditSubmit">บันทึกข้อมูล</a>
+            </form>
+          </div>
+        </div>
+        <div class="u-border-2 u-border-black u-container-style u-group u-radius-15 u-shape-round u-white u-group-2">
+          <div class="u-container-layout u-container-layout-2">
+            <h1 class="u-text u-text-default u-text-7">ข้อมูลการจอง</h1>
+            {% for book in booklist %}
+                <p style="border-top: 1px solid black;"><h4 style="display: inline;">{{book.TourName}}</h4> : {{book.FullName}}</p>
+            {% if book.PayNumber.status == 'รอการชำระ' %}
+                <p>สถานะการชำระเงิน:{{book.PayNumber.status}} <a href="{% url 'payment' book.PayNumber.PayNumber %} ">ชำระเงิน&nbsp;&nbsp;&nbsp;&nbsp;</a></p>
+            {% else %}
+                <p>สถานะการชำระเงิน:{{book.PayNumber.status}}</p>
+            {% endif %}
+                <p>วันเดินทาง:{{book.TourName.Day}}</p>
+            {% empty %}
+                <p>ไม่พบข้อมูลการจอง</p>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="u-border-2 u-border-black u-container-style u-group u-radius-15 u-shape-round u-white u-group-3">
+          <div class="u-container-layout u-valign-top u-container-layout-3">
+            <h1 class="u-text u-text-default u-text-8">เครดิต</h1>
+            <form action="{% url 'profile' %}" method="post" id = "CreditForm">
+              {% csrf_token %}
+              <h3 class="u-text u-text-default u-text-15">
+                <label for="option4">
+                  <input type="radio" id="option4" name="addCredit" value= 5000 style=" width: 20px;height: 20px"> 5000 เครดิต
+                </label>
+              </h3>
+              <h3 class="u-text u-text-default u-text-10">
+                <label for="option1">
+                  <input type="radio" id="option1" name="addCredit" value= 100 style=" width: 20px;height: 20px"> 100 เครดิต
+              </label>
+              </h3>
+              <h3 class="u-text u-text-default u-text-11"> 
+                <label for="option5">
+                  <input type="radio" id="option5" name="addCredit" style=" width: 20px;height: 20px" value= 10000> 10000 เครดิต
+              </label>
+              </h3>
+              <h3 class="u-text u-text-default u-text-12">
+                <label for="option2">
+                  <input type="radio" id="option2" name="addCredit" value= 500 style=" width: 20px;height: 20px"> 500 เครดิต
+                </label>
+              </h3>
+              <h3 class="u-text u-text-default u-text-13">
+                <label for="option6">
+                  <input type="radio" id="option6" name="addCredit" value= 20000 style=" width: 20px;height: 20px"> 20000 เครดิต
+                </label>
+              </h3>
+              <h3 class="u-text u-text-default u-text-14">
+                <label for="option3">
+                  <input type="radio" id="option3" name="addCredit" value= 1000 style=" width: 20px;height: 20px"> 1000 เครดิต
+                </label>
+              </h3>
+              <a class="u-border-none u-btn u-btn-round u-button-style u-custom-color-1 u-radius-30 u-btn-2" id = "FormCreditSubmit">เติมเครดิต</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section> 
+  </body>
+
+<script>
+  const formSubmitBtn = document.getElementById('FormEditSubmit');
+  const formCreditBtn = document.getElementById('FormCreditSubmit');
+
+  formSubmitBtn.addEventListener('click', function(event) {
+
+      event.preventDefault();
+
+      const form = document.getElementById('editform');
+      
+      form.submit();
+  });
+  formCreditBtn.addEventListener('click', function(event) {
+
+      event.preventDefault();
+
+      const form = document.getElementById('CreditForm');
+      
+      form.submit();
+  });
+</script>
+{% endblock %}

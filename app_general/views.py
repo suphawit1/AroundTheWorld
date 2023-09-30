@@ -70,15 +70,30 @@ def payment(request, pay_num):
     Cus = Customer.objects.get(user=logged_in_user)
     one_book = Booking.objects.filter(PayNumber = pay_num)
     one_payment = Payment.objects.get(PayNumber = pay_num)
+    error_messages = ''
     one_tour = one_book[0].TourName
     if request.method == 'POST':
         form = Fakecardform(request.POST)
+        error_messages = ''
+
+        error_Name = form.errors.get('Name')
+        errors_Card = form.errors.get('CreditCard')
+        errors_CVV = form.errors.get('CVV')
+
+        if errors_Card:
+            error_messages += "***เลขบัตรเครดิตต้องเป็นตัวเลขเท่านั้น***\n"
+        if  error_Name:
+            error_messages += "***ชื่อเจ้าของบัตรต้องเป็นตัวอักษรภาษาอังกฤษเท่านั้น***\n"
+        if  errors_CVV:
+            error_messages += "***เลข CVV ต้องเป็นตัวเลขเท่านั้น***\n"
+
         if form.is_valid():
             one_payment.status = "สำเร็จ"
+            error_messages = 'Pass'
             one_payment.save()
             return HttpResponseRedirect(reverse('home'))
     else:
         form = Fakecardform()
 
-    context = {'form':form,'book':one_book[0],'payment':one_payment,'cus':Cus,'tour':one_tour}
+    context = {'form':form,'book':one_book[0],'payment':one_payment,'cus':Cus,'tour':one_tour,"error_mess":error_messages}
     return render(request,'app_general/payment.html',context)

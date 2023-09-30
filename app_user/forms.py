@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Customer
 from django.core.validators import RegexValidator
+from django.core.validators import MinLengthValidator, MaxLengthValidator
 
 numeric_validator = RegexValidator(
         regex=r'^[0-9]*$',
@@ -32,10 +33,19 @@ class RegisterForm(UserCreationForm):
         fields = ('username', 'password1', 'password2', 'FirstName','LastName','Contract','Email')
 
 class UserEditForm(forms.ModelForm):
-    CusFirstName = forms.CharField(label='ชื่อจริง', widget=forms.TextInput, validators=[alpha_validator])
-    CusLastName = forms.CharField(label='นามสกุล', widget=forms.TextInput, validators=[alpha_validator])
-    CusContract = forms.CharField(label='เบอร์โทรศัพท์', widget=forms.TextInput,validators=[numeric_validator])
-    CusEmail = forms.EmailField(label='อีเมล์', widget=forms.TextInput)
+    CusFirstName = forms.CharField(label='ชื่อจริง', widget=forms.TextInput(attrs={'style': 'width: 140px; text-align: center; border: 1px solid rgba(0, 0, 0, 0.3);'}), validators=[alpha_validator],
+                                   error_messages={'invalid': 'ชื่อ ต้องเป็นตัวอักษรไทยเท่านั้น'})
+    CusLastName = forms.CharField(label='นามสกุล', widget=forms.TextInput(attrs={'style': 'width: 190px; text-align: center; border: 1px solid rgba(0, 0, 0, 0.3);'}), validators=[alpha_validator],
+                                   error_messages={'invalid': 'นามสกุล ต้องเป็นตัวอักษรไทยเท่านั้น'})
+    CusContract = forms.CharField(label='เบอร์โทรศัพท์',
+            widget=forms.TextInput(attrs={'style': 'width: 230px; text-align: center; border: 1px solid rgba(0, 0, 0, 0.3);'}),
+            validators=[
+            numeric_validator,  # Your custom numeric validator
+            MinLengthValidator(limit_value=7, message='เบอร์โทรศัพท์ต้องมีอย่างน้อย 7 ตัว'),
+            MaxLengthValidator(limit_value=10, message='เบอร์โทรศัพท์ต้องมีไม่เกิน 10 ตัว')
+        ],
+        error_messages={'invalid': 'เบอร์โทรศัพท์ไม่ถูกต้อง'})
+    CusEmail = forms.EmailField(label='อีเมล์', widget=forms.TextInput(attrs={'style': 'width: 475px; text-align: center; border: 1px solid rgba(0, 0, 0, 0.3);'}))
 
     class Meta:
         model = Customer

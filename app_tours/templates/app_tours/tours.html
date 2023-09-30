@@ -24,8 +24,8 @@
             <div class="u-clearfix u-sheet u-sheet-1" style="display: flex; overflow-x: auto; justify-content: center;">
                 {% for tour in tours %}
                 {% if tour.CountryName.Region == region %}
-                <div style="cursor: pointer;" onclick="location.href='{% url 'tour' tour.TourName %}'" class="u-border-1 u-border-grey-30 u-container-style u-group u-hover-feature u-radius-15 u-shape-round u-white u-group-1">
-                    <div class="u-container-layout u-valign-top u-container-layout-1">
+                <div style="cursor: pointer; min-height: 0px;" onclick="location.href='{% url 'tour' tour.TourName %}'" class="u-border-1 u-border-grey-30 u-container-style u-group u-hover-feature u-radius-15 u-shape-round u-white u-group-1">
+                    <div class="u-container-layout u-valign-top u-container-layout-1" style="min-height: 0px;">
                         <img class="custom-expanded u-image u-image-round u-radius-15 u-image-1" src="{% static tour.immage%}" data-image-width="1040" data-image-height="1040">
                         <h3 class="u-align-center u-text u-text-2"> {{tour.TourName}}<br>{{tour.TripDuration}}
                         </h3>
@@ -33,8 +33,8 @@
                         </h4>
                         <h3 class="u-align-center u-text u-text-default u-text-4">{{tour.price|floatformat:'g'}}<br>
                         </h3>
-                        <h4 class="u-align-center u-text u-text-5">
-                            {% for i in tour.ListLoID.all %}
+                        <h4 class="u-align-center u-text u-text-5" style="height: 65px; overflow: hidden;">
+                            {% for i in tour.ListLoID.all|slice:":5" %}
                                 - {{ i }}
                             {% endfor %}
                         </h4>

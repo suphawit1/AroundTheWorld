@@ -215,15 +215,17 @@ h2{
     margin-left: 47%;
 }
 #totaltime{
-    margin-left: 35%;
+    margin-left: 10%;
 }
 
 .left-text {
     margin-right: 10px;
+    margin-left: 30px;
 }
   
 .right-text {
     margin-left: 10px;
+    margin-right: 30px;
 }
 .left-div {
     float: left;
