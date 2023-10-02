@@ -93,10 +93,9 @@ def payment(request, pay_num):
             if (method == "CREDITUSING"):
                 Cus.Credits = Cus.Credits - one_payment.Amount
                 Cus.save()
-            #one_payment.status = "สำเร็จ"
+            one_payment.status = "สำเร็จ"
             error_messages = 'Pass'
-            #one_payment.save()
-            return HttpResponseRedirect(reverse('home'))
+            one_payment.save()
     else:
         form = Fakecardform()
 
