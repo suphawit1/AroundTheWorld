@@ -26,7 +26,7 @@
                 {% if tour.CountryName.Region == region %}
                 <div style="cursor: pointer; min-height: 0px;" onclick="location.href='{% url 'tour' tour.TourName %}'" class="u-border-1 u-border-grey-30 u-container-style u-group u-hover-feature u-radius-15 u-shape-round u-white u-group-1">
                     <div class="u-container-layout u-valign-top u-container-layout-1" style="min-height: 0px;">
-                        <img class="custom-expanded u-image u-image-round u-radius-15 u-image-1" src="{% static tour.immage%}" data-image-width="1040" data-image-height="1040">
+                        <img class="custom-expanded u-image u-image-round u-radius-15 u-image-1" src="{{tour.immage.url}}" data-image-width="1040" data-image-height="1040">
                         <h3 class="u-align-center u-text u-text-2"> {{tour.TourName}}<br>{{tour.TripDuration}}
                         </h3>
                         <h4 class="u-align-center u-text u-text-3">ราคาเริ่มต้น (บาท)&nbsp;<br>

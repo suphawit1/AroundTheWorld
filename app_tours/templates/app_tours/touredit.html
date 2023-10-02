@@ -39,7 +39,13 @@
                     <p class="u-text u-text-5"> <input class = "edithead" type="text" id="Highlight" placeholder="ใส่สถานที่ Highlight" style="margin-top: 10px; width: 450px;"></p>
                   </div>
                 </div>
-                <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="{% static tour.immage%}" alt="" data-image-width="2245" data-image-height="1587">
+                <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="{{tour.immage.url}}" alt="" data-image-width="2245" data-image-height="1587">
+                <h4>ใส่/เปลื่ยน รูปภาพ</h4>
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                  <input type="file" name="file">
+                  <button type="submit">Upload</button>
+                </form>
               </div>
             </div>
           </div>

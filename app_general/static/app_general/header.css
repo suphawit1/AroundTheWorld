@@ -22,6 +22,7 @@ body {
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
     position: fixed;
     top: 0;
+    line-height: 22px;
 }
 
 ul:not(.u-unstyled) {
@@ -99,6 +100,23 @@ ul:not(.u-unstyled) {
     color: black;
     font-size: 24px; /* ขนาดของตัวหนังสือเมนู */
 }
+.logout{
+    background-color: transparent; /* สีพื้นหลังของปุ่มเป็นโปร่ง */
+    color: black; /* สีข้อความบนปุ่ม */
+    padding: 2px 7px; /* ขนาดของปุ่ม */
+    border: 2px solid black; /* เส้นขอบ 2px สีดำ */
+    border-radius: 15px; /* มีขอบมนรัศมี 15px */
+    cursor: pointer; /* เปลี่ยนรูปลูกศรเมื่อนำเมาส์ไปชี้ที่ปุ่ม */
+    font-size: 15px; /* ขนาดของตัวหนังสือบนปุ่ม */
+    margin-left: 20px; /* ระยะห่างซ้ายของปุ่ม */
+    transition: background-color 0.3s, color 0.3s; /* เพิ่มอนิเมชันสำหรับ hover */
+}
+
+.logout:hover{
+    background-color: #001eff; /* สีพื้นหลังของปุ่มเมื่อ hover */
+    color: white; /* สีข้อความบนปุ่มเมื่อ hover */
+}
+
 
 .user-actions .login-button,
 .user-actions .register-button {

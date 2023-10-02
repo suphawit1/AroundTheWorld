@@ -60,7 +60,11 @@
                     <span style="font-size: 3rem;">฿{{tour.price|floatformat:'g'}}</span><br>
                   {% endif %}
                 </h2>
+                {% if user.is_staff  == 0 %}
                 <button class="u-border-none u-btn u-btn-round u-button-style u-custom-color-5 u-radius-30 u-btn-1" rel="nofollow" onclick="goToBookingPage()">จองทัวร์</button>
+                {% else %}
+                <button  style="top: 10px; left: 65px;" class="u-border-none u-btn u-btn-round u-button-style u-custom-color-5 u-radius-30 u-btn-1" rel="nofollow" onclick="location.href='{% url 'touredit' tour.TourName %}'">แก้ไข/เพิ่มข้อมูล</button>
+                {% endif %}
               </div>
             </div>
             <div class="u-border-2 u-border-grey-75 u-container-style u-group u-radius-15 u-shape-round u-white u-group-3">
@@ -75,7 +79,7 @@
                 {% endif %}
               </div>
             </div>
-            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="{% static tour.immage%}" alt="" data-image-width="2245" data-image-height="1587">
+            <img class="u-image u-image-contain u-image-default u-preserve-proportions u-image-2" src="{{tour.immage.url}}" alt="" data-image-width="2245" data-image-height="1587">
           </div>
         </div>
       </div>
@@ -87,7 +91,6 @@
             <img class="u-image u-image-default u-preserve-proportions u-image-1" src="{% static 'app_tour/description.png' %}" alt="" data-image-width="256" data-image-height="256">
             <h2 class="u-text u-text-default u-text-1"> รายละเอียดการท่องเที่ยว<br>
             </h2>
-            <button onclick="location.href='{% url 'touredit' tour.TourName %}'" style="margin-left: 570px; top: -35px; cursor: pointer;">แก้ไข/เพิ่มข้อมูล</button>
           </div>
         </div>
       </div>

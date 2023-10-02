@@ -12,18 +12,28 @@
             </div>
             <div class="nav-links">
                 <ul class = "tourhead">
-                    <li class = "tourhead"><a href="{% url 'home'%}">หน้าหลัก</a></li>
-                    <li class = "tourhead"><a href="{% url 'tours'%}">ทัวร์การท่องเที่ยว</a></li>
+                    <li class = "tourhead"><a href="{% url 'tours'%}">หน้าหลัก</a></li>
+                    <li  class = "tourhead"><a href="#">กรุ๊ปส่วนตัว</a></li>
+                    <li  class = "tourhead"><a href="#">จัดกรุ๊ปองค์กร</a></li>
+                    <li  class = "tourhead"><a href="#">โปรโมชั่น</a></li>
                 </ul>
             </div>
         </div>
         {% if user.is_authenticated %}
         <div class="header-right">
-            <div class="user-info" style="cursor: pointer;" onclick="goToProfilePage()">
-                <span class="user-name">{{ user.username }}</span>
+            <div class="user-info" style="cursor: pointer;">
+                {% if user.is_staff == 1%}
+                    <span class="user-name" onclick="goToAdminPage()">Admin</span>
+                    <span class="logout"  onclick="goToLogoutPage()">ลงชื่อออก</span>
+                </div>
+                <img style="cursor: pointer;" onclick="goToAdminPage()" src="{% static 'app_general/iconprofile.png' %}" class="profile-picture"></img>
+                {% else %}
+                <span class="user-name" onclick="goToProfilePage()">{{ user.username }}</span>
                 <span class="user-credit">เครดิต {{user_credit}} บาท</span>
-            </div>
-            <img style="cursor: pointer;" onclick="goToProfilePage()" src="{% static 'app_general/iconprofile.png' %}" class="profile-picture"></img>
+                <span class="logout"  onclick="goToLogoutPage()">ลงชื่อออก</span>    
+                </div>
+                <img style="cursor: pointer;" onclick="goToProfilePage()" src="{% static 'app_general/iconprofile.png' %}" class="profile-picture"></img>
+            {% endif %}
         </div>
         {% else %}
         <div class="header-right">
@@ -45,11 +55,19 @@
         window.location.href = RegisterUrl;
     }
     function goToHomePage() {
-        var HomeUrl = "{% url 'home'%}";
+        var HomeUrl = "{% url 'tours'%}";
         window.location.href = HomeUrl;
     }
     function goToProfilePage() {
         var ProfileUrl = "{% url 'profile' %}";
         window.location.href = ProfileUrl;
+    }
+    function goToLogoutPage() {
+        var LogoutUrl = "{% url 'logout' %}";
+        window.location.href = LogoutUrl;
+    }
+    function goToAdminPage() {
+        var AdmintUrl = "/admin";
+        window.location.href = AdmintUrl;
     }
 </script>

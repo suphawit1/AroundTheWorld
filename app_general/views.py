@@ -88,9 +88,14 @@ def payment(request, pay_num):
             error_messages += "***เลข CVV ต้องเป็นตัวเลขเท่านั้น***\n"
 
         if form.is_valid():
-            one_payment.status = "สำเร็จ"
+            method = form.cleaned_data.get('Name')
+            print(method)
+            if (method == "CREDITUSING"):
+                Cus.Credits = Cus.Credits - one_payment.Amount
+                Cus.save()
+            #one_payment.status = "สำเร็จ"
             error_messages = 'Pass'
-            one_payment.save()
+            #one_payment.save()
             return HttpResponseRedirect(reverse('home'))
     else:
         form = Fakecardform()

@@ -5,7 +5,7 @@
 {% endblock %}
 {% block content%}
     <section class ="Booking_page">
-        <form method="post" action="{% url 'booking' tour.TourName %}">
+        <form id = "bookform" method="post" action="{% url 'booking' tour.TourName %}">
             {% csrf_token %}
             <div class = "Head_summary">
                 <h2 class = "headbook">จอง {{tour.TourName}}</h2>
@@ -15,7 +15,7 @@
                             <span id="checkedSeat1">เลขที่นั่ง: ไม่ได้เลือก</span>
                             <div class = "SeatForm">
                                 ชื่อ-นามสกุล
-                                <input type="text" name="Name">
+                                <input type="text" name="Name" id = "input1">
                                 เลขห้องพัก
                                 <select name="Room">
                                     {% for i in room %}
@@ -30,7 +30,7 @@
                             <span id="checkedSeat2">เลขที่นั่ง: ไม่ได้เลือก</span>
                             <div class = "SeatForm">
                                 ชื่อ-นามสกุล
-                                <input type="text" name="Name">
+                                <input type="text" name="Name" id = "input2">
                                 เลขห้องพัก
                                 <select name="Room">
                                     {% for i in room %}
@@ -45,7 +45,7 @@
                             <span id="checkedSeat3">เลขที่นั่ง: ไม่ได้เลือก</span>
                             <div class = "SeatForm">
                                 ชื่อ-นามสกุล
-                                <input type="text" name="Name">
+                                <input type="text" name="Name" id = "input3">
                                 เลขห้องพัก
                                 <select name="Room">
                                     {% for i in room %}
@@ -60,7 +60,7 @@
                             <span id="checkedSeat4">เลขที่นั่ง: ไม่ได้เลือก</span>
                             <div class = "SeatForm">
                                 ชื่อ-นามสกุล
-                                <input type="text" name="Name">
+                                <input type="text" name="Name" id = "input4">
                                 เลขห้องพัก
                                 <select name="Room">
                                     {% for i in room %}
@@ -75,7 +75,7 @@
                             <span id="checkedSeat5">เลขที่นั่ง: ไม่ได้เลือก</span>
                             <div class = "SeatForm">
                                 ชื่อ-นามสกุล
-                                <input type="text" name="Name">
+                                <input type="text" name="Name" id = "input5">
                                 เลขห้องพัก
                                 <select name="Room">
                                     {% for i in room %}
@@ -175,6 +175,22 @@
         }
         function getKeyByValue(object, value) {
             return Object.keys(object).find(key => object[key] === value);
+        }
+    });
+    const myForm = document.getElementById('bookform');
+
+    myForm.addEventListener('submit', function(event) {
+        if ( checkedCount == 0) {
+            event.preventDefault();
+            alert('โปรดเลือกอย่างน้อย 1 ที่ก่อนทำการจอง');
+        }
+        if (($(".SeatHead#1").is(":visible") && document.getElementById('input1').value.trim() === '') || 
+        ($(".SeatHead#2").is(":visible") && document.getElementById('input2').value.trim() === '') ||
+        ($(".SeatHead#3").is(":visible") && document.getElementById('input3').value.trim() === '') ||
+        ($(".SeatHead#4").is(":visible") && document.getElementById('input4').value.trim() === '') ||
+        ($(".SeatHead#5").is(":visible") && document.getElementById('input5').value.trim() === '')){
+            event.preventDefault();
+            alert('โปรดกรอกชื่อผู้จองให้ครบทุกช่อง');
         }
     });
 </script>

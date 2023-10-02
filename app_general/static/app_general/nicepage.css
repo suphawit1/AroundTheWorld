@@ -29,22 +29,22 @@ code {
   font-family: monospace,monospace;
   font-size: 1em;
 }
-button,
+button :not(.logout),
 input,
 select {
   color: inherit;
   font: inherit;
   margin: 0;
 }
-button,
+button :not(.logout),
 input {
   overflow: visible;
 }
-button,
+button :not(.logout),
 select {
   text-transform: none;
 }
-button,
+button :not(.logout),
 html [type="button"],
 [type="submit"] {
   -webkit-appearance: button;
