@@ -87,7 +87,7 @@ def touredit(request, tour_name):
     except:
         print("ไม่พบข้อมูล")
     if request.method == 'POST':
-        if request.FILES['file']:
+        if 'file' in request.FILES:
             uploaded_file = request.FILES['file']
             one_tour.immage = uploaded_file
         received_data = request.POST.get('data')

@@ -3,7 +3,9 @@
 {% load static %}
 {% block link %}
     <link rel="stylesheet" href="{% static 'app_tour/nicepagetour.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'app_tour/addstyle.css' %}" media="screen">
     <link rel="stylesheet" href="{% static 'app_tour/tour.css' %}" media="screen">
+    
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
     <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i">
 {% endblock %}
@@ -46,9 +48,125 @@
                     </div>
                 </div>
         {% endif %}
-        {% endfor %}  
+        {% endfor %} 
         </div>
     </section>
     {% endfor %}
+    <div class ="containeradd" style="margin-top: 10px;">
+        <div class="titleadd">
+            <span >ทำไมต้องเดินทางกับ</span>
+            <span class="head1add">Around The World</span>
+        </div>
+        <span class="title2add">สนุกกับการท่องธรรมชาติพร้อมกับเรียนรู้วัฒนธรรมท้องถิ่นในทุกที่ที่คุณไปเยือน<br></span>
+        <span class="title2add">โดยมีผู้ให้บริการเป็นคนท้องถิ่นซึ่งเชี่ยวชาญในพื้นที่นั้นๆด้วยบริการแบบกันเองดั่งญาติมิตร</span>
+        <div class="boxadd">
+            <div class="fiveboxadd" style="line-height: 1;">
+                <div class="boxwithcontentadd">
+                    <img class="picadd" src="{% static 'app_tour/checking.png' %}"><br>
+                    <div class="titleboxadd">
+                        <span class="head1add">ความคุ้มค่า</span>
+                        <span>ที่ท่านจะได้รับ</span>
+                    </div>
+                    <span class="text1add">ด้วยราคาเสมือนกับคุณไปเที่ยวด้วยตัวเอง เรามีความโปร่งใสในเรื่องของราคาและบริการ
+                        แจ้งรายละเอียดที่ชัดเจนสำหรับบริการที่รวมและไม่รวมในทัวร์
+                    </span>
+                </div>
+                <div class="boxwithcontentadd">
+                    <img class="picadd" src="{% static 'app_tour/earth.png' %}"><br>
+                    <div class="titleboxadd">
+                        <span class="head1add">ประสบการณ์</span>
+                        <span>ที่แสนประทับใจ</span>
+                    </div>
+                    <span class="text1add">นำท่านไปสัมผัสกับการท่องเที่ยวแบบคนที่คนท้องถิ่นเที่ยวกัน ไม่เพียงแต่เรียนรู้จากผู้นำเที่ยว แต่คุณยังได้เรียนรู้โดยตรงจากคนในชุมชน
+                        ซึ่งถือว่าเป็นสิ่งที่สำคัญที่สุดในการเดินทางกับเรา
+                    </span>
+                </div>
+                <div class="boxwithcontentadd">
+                    <img class="picadd" src="{% static 'app_tour/guide.png' %}"><br>
+                    <div class="titleboxadd">
+                        <span class="head1add">ผู้เชี่ยวชาญ</span>
+                        <span>ท้องถิ่น</span>
+                    </div>
+                    <span class="text1add">ผู้เชี่ยวชาญท้องถิ่นเป็นส่วนหนึ่งที่ทำให้ทริปของคุณไม่เหมือนใคร พวกเขาไม่ได้เป็นแค่ผู้นำเที่ยวเท่านั้น แต่เขาเปรียบเสมือนผู้ที่เชื่อมต่อคุณ
+                        กับคนในชุมชนอีกด้วย เพื่อสร้างประสบการณ์การท่องเที่ยวที่แปลกใหม่ให้กับลูกค้าของเรา
+                    </span>
+                </div>
+                <div class="boxwithcontentadd">
+                    <img class="picadd" src="{% static 'app_tour/knowledge.png' %}"><br>
+                    <div class="titleboxadd">
+                        <span>ได้ความรู้ และ</span>
+                        <span class="head1add">ความสนุกสนาน</span>
+                    </div>
+                    <span class="text1add">การท่องโลกเป็นส่วนหนึ่งของประสบการณ์การเรียนรู้ เราไม่เพียงแต่พาท่านไปเรียนรู้เกี่ยวกับประวัติศาสตร์ ความรู้และความสนุกสนานที่คุณได้รับผ่านการสัมผัสจากคนในชุมชนและ
+                        มิตรภาพระหว่างการเดินทางนี่สิเป็นอะไรที่สนุกที่สุดแล้ว
+                    </span>
+                </div>
+                <div class="boxwithcontentadd">
+                    <img class="picadd" src="{% static 'app_tour/nature.png' %}"><br>
+                    <div class="titleboxadd">
+                        <span>การท่องเที่ยว</span>
+                        <span class="head1add">แบบรับผิดชอบต่อสังคม</span>
+                    </div>
+                    <span class="text1add">สร้างผลกระทบเชิงบวกในการท่องเที่ยว ทั้งในเชิงเศรษฐกิจ วัฒนธรรมท้องถิ่น และสภาพแวดล้อมในทุกพื้นที่ที่เราเดินทางไปถือเป็นส่วนที่
+                        สำคัญที่สุด เราเดินทางเพื่อทำให้สถานที่นั้นๆเป็นสถานที่ท่องเที่ยวที่น่ามาเยือนและเก็บไว้เพียงแค่ความทรงจำเท่านั้น
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="serviceadd">
+        <div class="servicecontentadd">
+            <img src="{% static 'app_tour/service.jpg' %}" class="custompic1add">
+            <img src="{% static 'app_tour/service1.jpg' %}" class="custompic2add">
+            <div class="text-overlayadd">
+                <div class="titleserviceadd">
+                    <span>ทุกการเดินทาง มี...</span>
+                    <span class="header2add">จุดหมายปลายทาง</span><br>                    
+                </div>
+                <div class="descriptionadd">
+                    <span>ให้เราได้ช่วยคุณ เพื่อไปยังปลายทางที่คุณต้องการ</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="leftboxadd">
+            <div class="footerbox1add">
+                <div class="headerfooteradd">
+                    <span>บริษัท Around The World</span><br><br>
+                </div>
+                <span class="textfooteradd">
+                    คณะเทคโนโลยีสารสนเทศ สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง เลขที่ 1 ซอยฉลองกรุง 1 แขวงลาดกระบัง เขตลาดกระบัง กรุงเทพฯ 10520
+                </span>
+            </div>
+        </div>
+        <div class="centerboxadd">
+            <div class="footerbox2add">
+                <div class="headerfooteradd">
+                    <span>บริการลูกค้า</span><br><br>
+                </div>
+                <span class="textfooteradd">
+                    <span>กรุ๊ปทัวร์ส่วนตัว</span><br><br>
+                    <span>จัดกรุ๊ปองค์กร</span><br><br>
+                    <span>โปรโมชั่น</span>
+                </span>
+            </div>
+        </div>
+        <div class="rightboxadd" style="line-height: 1;">
+            <img src="{% static 'app_tour/phone.png' %}" class="customphoneiconadd">
+            <div class="headerfooter">
+                <span>ติดต่อสอบถาม จองทัวร์ โทร.</span>
+            </div>
+            <span class="textphoneadd">09999999999</span><br>
+            <span class="textfooteradd">ติดต่อผ่านอีเมล</span>
+            <div class="headerfooteradd">
+                <span>ฟหกหฟก@hotmail.com</span>
+            </div>
+            <span class="textfooteradd">วันเวลาทำการ</span>
+            <div class="headerfooteradd">
+                <span>จันทร์ - เสาร์ เวลา 09:00 - 18:00 น.</span>
+            </div>
+        </div>
+    </footer>
 </body>
 {% endblock content%}

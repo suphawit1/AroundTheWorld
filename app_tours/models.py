@@ -41,7 +41,7 @@ class Tours(models.Model):
     price = models.FloatField(default=0)
     FlightNo = models.IntegerField()
     Detail = models.TextField(null=True, blank= True)
-    immage = models.ImageField(upload_to='', null=True)
+    immage = models.ImageField(upload_to='', null=True,blank=True,default=" ")
     def __str__(self) -> str:
         return '{}'.format(self.TourName)
 

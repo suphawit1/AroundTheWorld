@@ -1,0 +1,172 @@
+/* กำหนด CSS ให้กับ .container */
+.containeradd {
+    width: 100%;
+    height: 500px; /* ทำให้ .container มีความสูงอย่างน้อยเท่ากับ viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* จัดเนื้อหาแนวนอนตรงกลางหน้าจอ */
+    background-color: rgb(255, 255, 255);
+    background-image: url(backhome.jpg);
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.serviceadd{
+    position: relative;
+    width: 100%;
+    height: 525px; /* ทำให้ .container มีความสูงอย่างน้อยเท่ากับ viewport */
+    display: flex;
+    flex-direction: column;
+}
+
+.fiveboxadd {
+    display: flex;
+    padding-top: 20px;
+}
+
+/* ปรับ CSS ใน .boxwithcontent */
+.boxwithcontentadd {
+    border-radius: 15px;
+    height: 210px;
+    background-color: white;
+    padding: 10px;
+    text-align: center;
+    margin: 5px 5px; /* เพิ่ม margin ด้านซ้ายและด้านขวา เป็น 5px และไม่มี margin ด้านบนและด้านล่าง */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้กล่อง */
+}
+
+.boxadd{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+/* กำหนด CSS ให้กับ .head1 */
+.head1add {
+    font-weight: bold;
+    color: #0036d9; /* สีข้อความ */
+}
+
+.titleadd{
+    font-size: 30px;
+    font-weight: 600;
+    padding-top: 20px;
+    padding-bottom: 10px;
+}
+
+.title2add{
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.titleboxadd{
+    font-size: 16px;
+    padding-bottom: 5px;
+}
+
+.picadd{
+    align-items: center;
+    width: 70px;
+    height: 70px;
+    padding-bottom: 5px;
+}
+
+.text1add{
+    padding-top: 10px;
+    font-size: 14px;
+}
+
+.custompic1add{
+    height: 525px;
+    width: 750px;
+}
+
+.custompic2add{
+    height: 525px;
+    width: 768px;
+}
+
+.servicecontentadd {
+    display: flex; /* จัดให้เนื้อหาแนวนอน */
+    align-items: center;
+}
+
+.text-overlayadd {
+    position: absolute; /* ตำแหน่งเป็น absolute */
+    top: 0; /* จัดข้อความด้านบนของ .service */
+    left: 0; /* จัดข้อความด้านซ้ายของ .service */
+    width: 100%; /* ทำให้ข้อความเต็มความกว้างของ .service */
+    height: 100%; /* ทำให้ข้อความเต็มความสูงของ .service */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center; /* จัดข้อความไปทางขวาของ .service */
+    z-index: 1; /* ตั้งค่าความสูงให้เหนือภาพ */
+    background-color: rgba(0, 0, 0, 0.2); /* สีพื้นหลังของข้อความ */
+    color: white; /* สีข้อความ */
+    padding: 20px;
+    box-sizing: border-box;
+    font-size: 36px;
+}
+
+.header2add {
+    font-size: 36px;
+    color: #0036d9;
+    margin-top: 10px;
+}
+
+.descriptionadd {
+    font-size: 36px;
+    margin-top: 10px;
+}
+
+footer{
+    width: 100%;
+    height: 230px; /* ทำให้ .container มีความสูงอย่างน้อยเท่ากับ viewport */
+    display: flex;
+    flex-direction: row;
+    background-color: #111145;
+}
+
+.headerfooteradd{
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.textfooteradd{
+    color: rgb(186, 186, 186);
+    font-size: 16px;
+}
+
+.textphoneadd{
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.customphoneiconadd{
+    height: 50px;
+    width: auto;
+    padding-left: 80px;
+}
+
+.leftboxadd{
+    padding-top: 20px;
+    padding-left: 300px;
+    padding-bottom: 20px;
+    padding-right: 10px;
+    width: 460px;
+}
+
+.centerboxadd{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 60px;
+}
+
+.rightboxadd{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+}
